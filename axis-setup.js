@@ -21,6 +21,7 @@ function rewriteYAxis(unit){
 
 	svg.append('g')
 			.attr("class", "y-axis")
+			.attr("fill", "white")
 			.attr("transform", "translate(40,0)")
 			.call(yAxis);
 	console.log('y axis rewritten');
