@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Final Project</title>
+	<!-- Always include D3 first. -->
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<!-- Include main.js, which is where all our code lives -->
+	<script src="values.js"></script>
+	<script src="axis-setup.js"></script>
+	<script src="animation-filter.js"></script>
+	<script src="initial-setup.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<!-- Slider -->
+	<div id = "slider-container">
+		<input id = "year" type = "range" min = "2000" max = "2016" onchange = "yearChange(this.value)" step = "1" oninput = "document.getElementById('slider-text').innerHTML = this.value;"></input>
+		<p id = "slider-text">2000</p>
+	</div>
+
+	<!-- Legend will be added inside this element -->
+	<div id = "legend-container">
+	</div>
+
+	<!-- Y axis data selection, move this next to the y-axis so the axis label can just be the dropdown -->
+	<div id = "select-container">
+		<select id = "selection" onchange = "dropdownChange(this.value)">
+			<option value = "# oscar nominations"># Oscar Nominations</option>
+			<option value = "golden globe"># Golden Globe Nominations</option>
+			<!--<option value = "gross ($)">Revenue</option>-->
+		</select>
+	</div>
+
+	<!-- X axis data selection (if needed) -->
+
+	
+	
+	<!-- Our graph will be added inside this divider element -->
+	<div id="graph"></div>
+
+</body>
+</html>
