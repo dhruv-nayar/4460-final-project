@@ -22,18 +22,17 @@ function initializeGraph(){
 	d3.csv("movies_edited.csv", function(error,data1){
 
 		window.data = data1;
+		var lg = new Set();
 
 		data.forEach(function(d){
-
-			if(+d.gross >= 0 && +d['#oscar nominations'] >= 0 && +d['golden globes'] >= 0 && +d['average rating'] >= 0){
-				d.gross = +d.gross;
-				d["# oscar nominations"] = +d["# oscar nominations"];
-				d["golden globes"] = +d["golden globes"];
-				d["average rating"] = +d["average rating"];
-				d["year"] = +d["year"];
-				d["gross ($)"] = +d["gross ($)"];
-			}
+			if (d.genres != ""){
+					d.genres.split("|").forEach(function(g){
+						lg.add(g);
+					})
+				}
 		})
+
+		console.log(lg);
 
 		var xAxis = createXAxis(data, xScale);
 		var yAxis = createYAxis(data, yScale, yAxisSelect.value);
@@ -65,12 +64,24 @@ function initializeGraph(){
 					if (d.year == year.value)
 						return 1;
 					else
-						return 0.03;
+						return 0.5;
 				})
 				.attr("cx", function(d){return xScale(d['average rating']);})
 				.attr("cy", function(d){return yScale(d['# oscar nominations']);});
 
+		createGenreChecklist(lg);
+
 	})
 
 	console.log('graph initialized');
+}
+
+function createGenreChecklist(lg){
+	var legendContainer = document.getElementById('legend-container');
+	lg.forEach(function(d){
+		legendContainer.append("input")
+		.attr("type", "checkbox")
+		.value(d)
+		.innerHTML(d);
+	})
 }

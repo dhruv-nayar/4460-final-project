@@ -47,6 +47,6 @@ function yearChange(year){
 }
 
 //this function will be used in place of all of the filtering boolean expressions so we can check and combine multiple filters without having to write them into numerous places
-function filterDot(datapoint){
+function filterDot(datapoint, year, genres){
 	console.log("dot filtered");
 }
