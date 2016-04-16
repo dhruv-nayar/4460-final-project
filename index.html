@@ -14,11 +14,6 @@
 </head>
 <body>
 
-	<!-- Slider -->
-	<div id = "slider-container">
-		<input id = "year" type = "range" min = "2000" max = "2016" onchange = "yearChange(this.value)" step = "1" oninput = "document.getElementById('slider-text').innerHTML = this.value;"></input>
-		<p id = "slider-text">2000</p>
-	</div>
 
 	<!-- Legend will be added inside this element -->
 	<div id = "legend-container">
@@ -39,6 +34,13 @@
 	
 	<!-- Our graph will be added inside this divider element -->
 	<div id="graph"></div>
+
+	<!-- Slider -->
+	<div id = "slider-container">
+		<input id = "year" type = "range" min = "2000" max = "2016" onchange = "yearChange(this.value)" step = "1" oninput = "document.getElementById('slider-text').innerHTML = this.value;"></input>
+		<p id = "slider-text">2000</p>
+	</div>
+
 
 </body>
 </html>

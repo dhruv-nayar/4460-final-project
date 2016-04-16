@@ -2,7 +2,7 @@ window.onload = initializeGraph;
 
 window.margin = {top: 50, right: 0, bottom: 30, left: 0};
 window.width = 700 - margin.left - margin.right;
-window.height = 600 - margin.top - margin.bottom;
+window.height = 500 - margin.top - margin.bottom;
 
 function initializeGraph(){
 
@@ -40,11 +40,14 @@ function initializeGraph(){
 
 		svg.append('g')
 			.attr("class", "x-axis")
+			.attr("fill", "white")
+			.attr("width", 2)
 			.attr("transform", "translate(40,"+height+")")
 			.call(xAxis);
 
 		svg.append('g')
 			.attr("class", "y-axis")
+			.attr("fill", "white")
 			.attr("transform", "translate(40,0)")
 			.call(yAxis);
 
