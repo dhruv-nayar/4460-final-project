@@ -6,6 +6,8 @@
 	<!-- Always include D3 first. -->
 	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	
 	<!-- Include main.js, which is where all our code lives -->
 	<script src="js/values.js"></script>
 	<script src="js/axis-setup.js"></script>
@@ -43,6 +45,7 @@
 			</div>
 
 			<div id="button-container">
+			<span id="button-container-text">Average Rating vs.</span>
 				<a class="btn waves-effect waves-light" data-value = "# oscar nominations" onclick= "dropdownChange(this.getAttribute('data-value'))"># Oscars</a>
 				<a class="btn waves-effect waves-light" data-value = "golden globe" onclick= "dropdownChange(this.getAttribute('data-value'))"># Golden Globe</a>
 				<a class="btn waves-effect waves-light" data-value = "gross ($)" onclick= "dropdownChange(this.getAttribute('data-value'))">Gross Revenue</a>

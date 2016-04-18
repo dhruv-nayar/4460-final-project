@@ -1,8 +1,25 @@
-window.onload = initializeGraph;
+$(document).ready(function(){
+	initializeGraph();
+});
 
 window.margin = {top: 50, right: 60, bottom: 30, left: 30};
 window.width = 700 - margin.left - margin.right;
 window.height = 500 - margin.top - margin.bottom;
+
+// add the tooltip area to the webpage
+var tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 1);
+
+var tip = d3.tip()
+	.attr('class', 'd3-tip')
+	.offset([-10, 0])
+	.html(function(d) {
+		return "<strong>Movie:</strong> <span style='color:red'>" + d.title + "</span><br />"+
+				"<span style='color:#19C800'>$" + d["gross ($)"] + "</span>";
+	});
+
+console.log("added tooltip");
 
 function initializeGraph(){
 
@@ -14,10 +31,12 @@ function initializeGraph(){
 	    .attr("height", height + margin.top + margin.bottom)
 	    .append("g")
 	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
+	svg.call(tip);
+
 
 	window.xScale = d3.scale.linear().range([0, width]);
 	window.yScale = d3.scale.linear().range([height, 0]);
-
 
 	d3.csv("movies_edited.csv", function(error,data1){
 
@@ -80,7 +99,7 @@ function initializeGraph(){
 					if (d.year == year.value)
 						return "red";
 					else
-						return "none";
+						return "#202020";
 				})
 				.attr("opacity", function(d){
 					if (d.year == year.value)
@@ -90,6 +109,8 @@ function initializeGraph(){
 				})
 				.attr("cx", function(d){return xScale(d['average rating']);})
 				.attr("cy", function(d){return yScale(d['# oscar nominations']) - 6;})
+				.on("mouseover", tip.show)
+				.on("mouseout", tip.hide)
 				.on("click", function(d){
 					// // setting up framework for second view
 					// var relatedMovies = findRelatedMovies(d.MovieId);
