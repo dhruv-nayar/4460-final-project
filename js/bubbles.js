@@ -1,8 +1,19 @@
-$(document).ready(function(){
-  newBubbleChart();
+$(document).ready(function(){ 
+ // newBubbleChart(bubbles);
+
+ //   $("#newBubbleButton").click(function(){
+ //    console.log("chart deleted from jquery button");
+ //    //var newBubbles = [{text: 'NewJava', count: '150'}, {text: 'New.Net', count: '402'}, {text: 'NewPhp', count: '321'}];
+ //    //newBubbleChart(newBubbles);
+ // });
 });
 
-function newBubbleChart() {
+var bubbles = [  {text: "Java", count: "236"}, {text: ".Net", count: "500"}, {text: "Php", count: "170"}, 
+{text: "Ruby", count: "123"}, {text: "D", count: "12"}, {text: "Python", count: "170"}, 
+{text: "C/C++", count: "382"}, {text: "Pascal", count: "10"}, {text: "Something", count: "170"}];
+
+function newBubbleChart(obj) {
+  $(".bubbleChart").empty();
   var bubbleChart = new d3.svg.BubbleChart({
     supportResponsive: true,
     //container: => use @default
@@ -16,17 +27,7 @@ function newBubbleChart() {
     //intersectInc: use @default
     //circleColor: use @default
     data: {
-      items: [
-        {text: "Java", count: "236"},
-        {text: ".Net", count: "382"},
-        {text: "Php", count: "170"},
-        {text: "Ruby", count: "123"},
-        {text: "D", count: "12"},
-        {text: "Python", count: "170"},
-        {text: "C/C++", count: "382"},
-        {text: "Pascal", count: "10"},
-        {text: "Something", count: "170"},
-      ],
+      items: obj,
       eval: function (item) {return item.count;},
       classed: function (item) {return item.text.split(" ").join("");}
     },
@@ -97,7 +98,5 @@ function newBubbleChart() {
         }
       }]
   });
-
-  return num;
   console.log("created bubble chart");
 }

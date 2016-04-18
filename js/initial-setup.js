@@ -32,8 +32,8 @@ function initializeGraph(){
 				}
 			//console.log(+d["gross ($)"]);
 			if(!isNaN(Number(d["gross ($)"]))){
-				console.log(Number(d['gross ($)']));
-				data.push({"year": d.year, "gross ($)": +d["gross ($)"], 'average rating': +d["average rating"], '# oscar nominations': +d['# oscar nominations'], 'golden globe': +d['golden globe']});
+				//console.log(Number(d['gross ($)']));
+				data.push({"movieId": d.movieId, "title": d.title, "year": d.year, "gross ($)": +d["gross ($)"], 'average rating': +d["average rating"], '# oscar nominations': +d['# oscar nominations'], 'golden globe': +d['golden globe']});
 			}
 		})
 
@@ -89,13 +89,25 @@ function initializeGraph(){
 						return 0.3;
 				})
 				.attr("cx", function(d){return xScale(d['average rating']);})
-				.attr("cy", function(d){return yScale(d['# oscar nominations']) - 6;});
+				.attr("cy", function(d){return yScale(d['# oscar nominations']) - 6;})
+				.on("click", function(d){
+					// // setting up framework for second view
+					// var relatedMovies = findRelatedMovies(d.MovieId);
+					// newBubbleChart(relatedMovies);
+					newBubbleChart([{text: d.title, count: d['average rating']}, {text: d.title+" 2", count: +d['average rating'] + .2}]);
+					console.log("graph clicked");
+				});
 
 		//createGenreChecklist(lg);
 
 	})
 
 	console.log('graph initialized');
+}
+
+/* algorithm to find 10 related movies to the clicked bubble */
+function findRelatedMovies(movieId) {
+
 }
 
 function createGenreChecklist(lg){
