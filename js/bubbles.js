@@ -1,4 +1,8 @@
-$(document).ready(function () {
+$(document).ready(function(){
+  newBubbleChart();
+});
+
+function newBubbleChart() {
   var bubbleChart = new d3.svg.BubbleChart({
     supportResponsive: true,
     //container: => use @default
@@ -93,4 +97,7 @@ $(document).ready(function () {
         }
       }]
   });
-});
+
+  return num;
+  console.log("created bubble chart");
+}
