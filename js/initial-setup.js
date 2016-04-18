@@ -41,7 +41,7 @@ function initializeGraph(){
 	d3.csv("movies_edited.csv", function(error,data1){
 
 		window.data = [];
-		var lg = new Set();
+		var lg = new Set(); // this is the list of genres we will be using
 
 		data1.forEach(function(d){
 			if (d.genres != ""){
@@ -56,8 +56,8 @@ function initializeGraph(){
 			}
 		})
 
-
-		console.log(lg);
+		initializeSimilarityEngine(data);
+		
 
 		var xAxis = createXAxis(data, xScale);
 		var yAxis = createYAxis(data, yScale, yAxisSelect.value);
@@ -115,7 +115,8 @@ function initializeGraph(){
 					// // setting up framework for second view
 					// var relatedMovies = findRelatedMovies(d.MovieId);
 					// newBubbleChart(relatedMovies);
-					newBubbleChart([{text: d.title, count: d['average rating']}, {text: d.title+" 2", count: +d['average rating'] + .2}]);
+					console.log(formattedSimilarMovies(d, 'average rating', yAxisSelect.value, 4));
+					newBubbleChart(formattedSimilarMovies(d, 'average rating', yAxisSelect.value, 4));
 					console.log("graph clicked");
 				});
 
