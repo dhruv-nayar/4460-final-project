@@ -7,11 +7,11 @@
 	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<!-- Include main.js, which is where all our code lives -->
-	<script src="values.js"></script>
-	<script src="axis-setup.js"></script>
-	<script src="animation-filter.js"></script>
-	<script src="initial-setup.js"x></script>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="js/values.js"></script>
+	<script src="js/axis-setup.js"></script>
+	<script src="js/animation-filter.js"></script>
+	<script src="js/initial-setup.js"x></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="js/materialize.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/materialize.css">
 
@@ -38,13 +38,14 @@
 				<select id="selection" onchange= "dropdownChange(this.value)">
 					<option value = "# oscar nominations"># Oscar Nominations</option>
 					<option value = "golden globe"># Golden Globe Nominations</option>
-					<!--<option value = "gross ($)">Revenue</option>-->
+					<option value = "gross ($)">Revenue</option>
 				</select>
 			</div>
 
 			<div id="button-container">
 				<a class="btn waves-effect waves-light" data-value = "# oscar nominations" onclick= "dropdownChange(this.getAttribute('data-value'))"># Oscars</a>
 				<a class="btn waves-effect waves-light" data-value = "golden globe" onclick= "dropdownChange(this.getAttribute('data-value'))"># Golden Globe</a>
+				<a class="btn waves-effect waves-light" data-value = "gross ($)" onclick= "dropdownChange(this.getAttribute('data-value'))">Gross Revenue</a>
 			</div>
 
 			<!-- Legend will be added inside this element -->
