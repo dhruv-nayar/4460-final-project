@@ -49,9 +49,7 @@ function initializeGraph(){
 						lg.add(g);
 					})
 				}
-			//console.log(+d["gross ($)"]);
-			if(!isNaN(Number(d["gross ($)"]))){
-				//console.log(Number(d['gross ($)']));
+			if(!isNaN(Number(d["gross ($)"])) && Number(d["gross ($)"]) > 10){
 				data.push({"movieId": d.movieId, "title": d.title, "year": d.year, "gross ($)": +d["gross ($)"], 'average rating': +d["average rating"], '# oscar nominations': +d['# oscar nominations'], 'golden globe': +d['golden globe']});
 			}
 		})
