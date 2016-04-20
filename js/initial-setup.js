@@ -17,7 +17,9 @@ var tip = d3.tip()
 	.offset([-10, 0])
 	.html(function(d) {
 		return "<strong>Movie:</strong> <span style='color:red'>" + d.title + "</span><br />"+
-				"<span style='color:#19C800'>$" + d["gross ($)"] + "</span>";
+				"<strong>Revenue:</strong><span style='color:#19C800'>$" + d["gross ($)"] + "</span><br />"+
+				"<strong>Oscar Nominations:</strong><span style='color:#19C800'> " + d['# oscar nominations'] + "</span><br />"+
+				"<strong>Golden Globe Nominations:</strong><span style='color:#19C800'> " + d['golden globe'] + "</span><br />";
 	});
 
 console.log("added tooltip");
@@ -33,7 +35,7 @@ function initializeGraph(){
 	    .attr("height", height + margin.top + margin.bottom)
 	    .append("g")
 	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-	
+
 	svg.call(tip);
 
 
@@ -57,7 +59,7 @@ function initializeGraph(){
 		})
 
 		initializeSimilarityEngine(data);
-		
+
 
 		var xAxis = createXAxis(data, xScale, xAxisUnit);
 		var yAxis = createYAxis(data, yScale, yAxisUnit);
@@ -126,8 +128,8 @@ function initializeGraph(){
 }
 
 function createGenreChecklist(lg){
-	lg.forEach(function(d){ 
+	lg.forEach(function(d){
 		$('#genre-container').append("<input type='checkbox' value = '"+d+"' id='genre"+d+"'/><label  class='padCheckbox' for='genre"+d+"'>"+d+"</label>");
-		console.log('appended genre ' + d); 
+		console.log('appended genre ' + d);
 	})
 }
