@@ -63,7 +63,7 @@
 					<option value = "gross ($)">Revenue</option>
 				</select>
 			</div>
-			<div id="select-container-x">
+			<div id="select-container-x" style = "height:80px; overflow:show;">
 				<select id="selection" onchange="dropdownXChange(this.value)">
 					<option value = "average rating">Average Rating</option>
 					<option value = "imdb rating">IMDB Rating</option>
@@ -91,10 +91,3 @@
 	</div>
 </body>
 </html>
-
-<script type="text/javascript">
-	function redrawGraph(obj){
-		dropdownChange(obj.getAttribute('data-value'));
-	}
-
-</script>
