@@ -94,12 +94,12 @@ function initializeGraph(){
 			.enter()
 				.append("circle")
 				.attr("class", "dot")
-				.attr("r", 5)
+				.attr("r", 4)
 				.attr("fill", function(d){
 					if (d.year == year.value)
 						return "red";
 					else
-						return "#202020";
+						return "none";
 				})
 				.attr("opacity", function(d){
 					if (d.year == year.value)
