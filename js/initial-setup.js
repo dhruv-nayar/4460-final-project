@@ -113,8 +113,8 @@ function initializeGraph(){
 					// // setting up framework for second view
 					// var relatedMovies = findRelatedMovies(d.MovieId);
 					// newBubbleChart(relatedMovies);
-					console.log(formattedSimilarMovies(d, 'average rating', yAxisUnit, 4));
-					newBubbleChart(formattedSimilarMovies(d, 'average rating', yAxisUnit, 4));
+					//console.log(formattedSimilarMovies(d, 'average rating', yAxisUnit, 2));
+					newBubbleChart(formattedSimilarMovies(d, 'average rating', yAxisUnit, 2));
 					console.log("graph clicked");
 				});
 
