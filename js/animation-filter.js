@@ -5,14 +5,21 @@ d3.selection.prototype.moveToFront = function() {
 };
 
 //function that registers whenever the dropdown has been changed. Changes scales and then moves dots
-function dropdownChange(unit){
+function dropdownYChange(unit){
 	yAxisUnit = unit;
 	rewriteYAxis(unit);
-	moveDots(unit);
+	moveDots();
+}
+
+function dropdownXChange(unit){
+	console.log(unit);
+	xAxisUnit = unit;
+	rewriteXAxis(unit);
+	moveDots();
 }
 
 //function that moves dots when the scales are changed
-function moveDots(unit){
+function moveDots(){
 	svg.selectAll('.dot')
 		.transition()
 		.duration(function(d){
@@ -22,10 +29,10 @@ function moveDots(unit){
 			return 20;
 		})
 		.attr("cx", function(d){
-			return xScale(d['average rating']);
+			return xScale(d[xAxisUnit]) + margin.left;
 		})
 		.attr("cy", function(d){
-			return yScale(d[unit]) - 6;
+			return yScale(d[yAxisUnit]) - 6;
 		});
 }
 

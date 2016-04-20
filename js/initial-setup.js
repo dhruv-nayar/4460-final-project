@@ -25,6 +25,7 @@ console.log("added tooltip");
 function initializeGraph(){
 
 	window.yAxisUnit = "# oscar nominations";
+	window.xAxisUnit = "average rating";
 	var year = document.getElementById('year');
 
 	window.svg = d3.select("#graph").append("svg")
@@ -50,15 +51,15 @@ function initializeGraph(){
 						lg.add(g);
 					})
 				}
-			if(!isNaN(Number(d["gross ($)"])) && Number(d["gross ($)"]) > 10){
-				data.push({"movieId": d.movieId, "title": d.title, "year": d.year, "gross ($)": +d["gross ($)"], 'average rating': +d["average rating"], '# oscar nominations': +d['# oscar nominations'], 'golden globe': +d['golden globe']});
+			if(!isNaN(Number(d["gross ($)"])) && Number(d["gross ($)"]) >= 100000 && d['average rating'] >= 0 && d.metascore >= 0 && d['imdb rating'] >= 0){
+				data.push({"movieId": d.movieId, "title": d.title, "year": d.year, "gross ($)": +d["gross ($)"], 'average rating': +d["average rating"], 'imdb rating': +d['imdb rating'], 'metascore': +d['metascore'],'# oscar nominations': +d['# oscar nominations'], 'golden globe': +d['golden globe']});
 			}
 		})
 
 		initializeSimilarityEngine(data);
 		
 
-		var xAxis = createXAxis(data, xScale);
+		var xAxis = createXAxis(data, xScale, xAxisUnit);
 		var yAxis = createYAxis(data, yScale, yAxisUnit);
 
 
@@ -106,14 +107,14 @@ function initializeGraph(){
 					else
 						return 0.3;
 				})
-				.attr("cx", function(d){return xScale(d['average rating']);})
+				.attr("cx", function(d){return xScale(d['average rating']) + margin.left;})
 				.attr("cy", function(d){return yScale(d['# oscar nominations']) - 6;})
 				.on("mouseover", tip.show)
 				.on("mouseout", tip.hide)
 				.on("click", function(d){
 					// // setting up framework for second view
-					//console.log(formattedSimilarMovies(d, 'average rating', yAxisUnit, 2));
-					newBubbleChart(formattedSimilarMovies(d, 'average rating', yAxisUnit, 4));
+					console.log(formattedSimilarMovies(d, 'average rating', yAxisUnit, 2));
+					newBubbleChart(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 4));
 					console.log("graph clicked");
 				});
 
@@ -126,7 +127,7 @@ function initializeGraph(){
 
 function createGenreChecklist(lg){
 	lg.forEach(function(d){ 
-		$('#genre-container').append("<input type='checkbox' id='genre"+d+"'/><label  class='padCheckbox' for='genre"+d+"'>"+d+"</label>");
+		$('#genre-container').append("<input type='checkbox' value = '"+d+"' id='genre"+d+"'/><label  class='padCheckbox' for='genre"+d+"'>"+d+"</label>");
 		console.log('appended genre ' + d); 
 	})
 }

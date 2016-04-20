@@ -1,6 +1,6 @@
 html{
   background-color: #202020;
-  overflow-y: auto;
+  overflow-y: auto; 
 }
 
 .bubbleChart {
@@ -23,7 +23,7 @@ html{
   font-weight: 300;
 }
 
-#select-container {
+#select-container-y {
     color: white;
      -webkit-transform: rotate(-90deg);
     -webkit-transform-origin: left top;
@@ -39,6 +39,17 @@ html{
     position: absolute;
     bottom: 15%;
     left: 0;
+    white-space: nowrap;    
+    font-size: 48px;
+
+}
+
+#select-container-x {
+    color: white;
+    position: absolute;
+    bottom: 15%;
+    left: 200px;
+    top: 90px;
     white-space: nowrap;    
     font-size: 48px;
 

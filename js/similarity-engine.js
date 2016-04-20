@@ -3,6 +3,8 @@ var sortedArrays = {};
 function initializeSimilarityEngine(rawData){
 
 	sortedArrays['average rating'] = sortArrayByUnit(rawData, 'average rating');
+    sortedArrays['imdb rating'] = sortArrayByUnit(rawData, 'imdb rating');
+    sortedArrays['metascore'] = sortArrayByUnit(rawData, 'metascore');
 	//console.log(getKSimilarMovies(sortedArrays['average rating'][1014], 'average rating', 5));
 }
 

@@ -1,17 +1,18 @@
 //All the functions for creating and re-writing x and y axis
 
-function createXAxis(data, scale){
-	scale.domain([0,d3.max(data,function(d){return d['average rating'];})]);
-	var xAxis = d3.svg.axis().scale(scale).orient("bottom");
-	console.log('x axis created');
-	return xAxis;
-}
-
 function createYAxis(data, scale, unit){
 	scale.domain([d3.min(data, function(d){return d[unit];}), d3.max(data,function(d){return d[unit];})]);
 	var yAxis = d3.svg.axis().scale(scale).ticks(5).orient("left");
 	console.log('y axis created');
 	return yAxis;
+}
+
+function createXAxis(data, scale, unit){
+	console.log(unit);
+	scale.domain([d3.min(data, function(d){return d[unit];}), d3.max(data,function(d){return d[unit];})]);
+	var xAxis = d3.svg.axis().scale(scale).ticks(5).orient("bottom");
+	console.log('x axis created');
+	return xAxis;
 }
 
 function rewriteYAxis(unit){
@@ -32,6 +33,25 @@ function rewriteYAxis(unit){
 			    .style("text-anchor", "end")
 			    .text(unit);
 	console.log('y axis rewritten');
+}
+
+function rewriteXAxis(unit){
+	svg.selectAll('.x.axis').remove();
+	var xAxis = createXAxis(data, xScale, unit);
+
+	svg.append('g')
+		.attr("class", "x axis")
+				.attr("fill", "white")
+				.attr("width", 2)
+				.attr("transform", "translate("+margin.left+","+height+")")
+				.call(xAxis)
+				.append("text")
+			      .attr("class", "label")
+			      .attr("x", width+30)
+			      .attr("y", -6)
+			      .style("text-anchor", "end")
+			      .text(unit);
+	console.log('x axis rewritten');
 }
 
 function changeDomain(data, scale, unit){

@@ -46,7 +46,7 @@
 				<a class="btn waves-effect waves-light" data-value = "gross ($)" onclick= "dropdownChange(this.getAttribute('data-value'))">Gross Revenue</a>
 				<!-- <a id="newBubbleButton" class="btn waves-effect waves-light">New Bubble Chart</a>
 			</div> -->
-			<h2 class="center white-text"> Are the Oscars <span class="strong"> FAKE? </span></h2>
+			<h2 class="center white-text"> Are the Oscars <span class="strong"> FAKE? </span></h2> <!-- maybe do something like "do ratings matter? -->
 			<!-- Legend will be added inside this element -->
 			<div id = "legend-container" class="col s3">
 			</div>
@@ -56,11 +56,18 @@
 		<div class="row">
 			<!-- X axis data selection (if needed) -->
 
-			<div id="select-container" class="">
-				<select id="selection" onchange= "dropdownChange(this.value)">
+			<div id="select-container-y" class="">
+				<select id="selection" onchange= "dropdownYChange(this.value)">
 					<option value = "# oscar nominations"># Oscar Nominations</option>
 					<option value = "golden globe"># Golden Globe Nominations</option>
 					<option value = "gross ($)">Revenue</option>
+				</select>
+			</div>
+			<div id="select-container-x">
+				<select id="selection" onchange="dropdownXChange(this.value)">
+					<option value = "average rating">Average Rating</option>
+					<option value = "imdb rating">IMDB Rating</option>
+					<option value = "metascore">Metascore</option>
 				</select>
 			</div>
 			<div id="graph-container" class="col s12 m6">
