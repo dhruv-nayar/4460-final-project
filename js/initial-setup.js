@@ -113,7 +113,7 @@ function initializeGraph(){
 				.on("mouseout", tip.hide)
 				.on("click", function(d){
 					// // setting up framework for second view
-					console.log(formattedSimilarMovies(d, 'average rating', yAxisUnit, 2));
+					console.log(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 2));
 					newBubbleChart(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 4));
 					console.log("graph clicked");
 				});

@@ -2,10 +2,10 @@ var sortedArrays = {};
 
 function initializeSimilarityEngine(rawData){
 
-	sortedArrays['average rating'] = sortArrayByUnit(rawData, 'average rating');
-    sortedArrays['imdb rating'] = sortArrayByUnit(rawData, 'imdb rating');
-    sortedArrays['metascore'] = sortArrayByUnit(rawData, 'metascore');
-	//console.log(getKSimilarMovies(sortedArrays['average rating'][1014], 'average rating', 5));
+	sortedArrays['average rating'] = sortArrayByUnit(rawData.slice(), 'average rating');
+    sortedArrays['imdb rating'] = sortArrayByUnit(rawData.slice(), 'imdb rating');
+    sortedArrays['metascore'] = sortArrayByUnit(rawData.slice(), 'metascore');
+	console.dir(sortedArrays);
 }
 
 function sortArrayByUnit(array, unit){
@@ -15,7 +15,9 @@ function sortArrayByUnit(array, unit){
 
 
 function getKSimilarMovies(movie, unit, k){
-	return getKclosest(sortedArrays[unit], movie, k, sortedArrays[unit].length, 'average rating')
+	var kClosest = getKclosest(sortedArrays[unit], movie, k, sortedArrays[unit].length, 'average rating');
+    //console.log(kClosest);
+    return kClosest;
 }
 
 function formattedSimilarMovies(movie, unit, displayUnit, k){
@@ -90,12 +92,12 @@ function getKclosest(arr, x, k, n, unit)
     // If there are no more elements on right side, then
     // print left elements
     while (count < k && l >= 0)
-        similarMovies.push(arr[l--][unit]), count++;
+        similarMovies.push(arr[l--]), count++;
  
     // If there are no more elements on left side, then
     // print right elements
     while (count < k && r < n)
-        similarMovies.push(arr[r++][unit]), count++;
+        similarMovies.push(arr[r++]), count++;
 
     return similarMovies;
 }
