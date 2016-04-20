@@ -46,7 +46,7 @@
 				<a class="btn waves-effect waves-light" data-value = "gross ($)" onclick= "dropdownChange(this.getAttribute('data-value'))">Gross Revenue</a>
 				<!-- <a id="newBubbleButton" class="btn waves-effect waves-light">New Bubble Chart</a>
 			</div> -->
-			<h2 class="center white-text"> Are the Oscars <span class="strong"> FAKE? </span></h2> <!-- maybe do something like "do ratings matter? -->
+			<h2 class="center white-text light"> Do Ratings even <span class="strong"> MATTER? </span></h2> <!-- maybe do something like "do ratings matter? -->
 			<!-- Legend will be added inside this element -->
 			<div id = "legend-container" class="col s3">
 			</div>
@@ -63,16 +63,23 @@
 					<option value = "gross ($)">Revenue</option>
 				</select>
 			</div>
-			<div id="select-container-x">
-				<select id="selection" onchange="dropdownXChange(this.value)">
-					<option value = "average rating">Average Rating</option>
-					<option value = "imdb rating">IMDB Rating</option>
-					<option value = "metascore">Metascore</option>
-				</select>
-			</div>
+			
 			<div id="graph-container" class="col s12 m6">
 				<!-- Our graph will be added inside this divider element -->
 				<div id="graph"></div>
+				<!-- Slider -->
+				<div id = "slider-container" style="width: 50%">
+					<input id="year" type= "range" min= "2000" max="2016" onchange= "yearChange(this.value)" step= "1" oninput= "document.getElementById('slider-text').innerHTML = this.value;"></input>
+					<p id = "slider-text">2008</p>
+				</div>
+
+				<div id="select-container-x">
+					<select id="selection" onchange="dropdownXChange(this.value)">
+						<option value = "average rating">Average Rating</option>
+						<option value = "imdb rating">IMDB Rating</option>
+						<option value = "metascore">Metascore</option>
+					</select>
+				</div>
 			</div>
 			<div class="col s12 m6">
 				<div id="genre-container"></div>
@@ -82,11 +89,7 @@
 			
 		</div>
 
-		<!-- Slider -->
-		<div id = "slider-container">
-			<input id="year" type= "range" min= "2000" max="2016" onchange= "yearChange(this.value)" step= "1" oninput= "document.getElementById('slider-text').innerHTML = this.value;"></input>
-			<p id = "slider-text">2008</p>
-		</div>
+		
 
 	</div>
 </body>
