@@ -23,7 +23,7 @@ console.log("added tooltip");
 
 function initializeGraph(){
 
-	var yAxisSelect = document.getElementById('selection');
+	window.yAxisUnit = "# oscar nominations";
 	var year = document.getElementById('year');
 
 	window.svg = d3.select("#graph").append("svg")
@@ -58,7 +58,7 @@ function initializeGraph(){
 		
 
 		var xAxis = createXAxis(data, xScale);
-		var yAxis = createYAxis(data, yScale, yAxisSelect.value);
+		var yAxis = createYAxis(data, yScale, yAxisUnit);
 
 
 		svg.append('g')
@@ -85,7 +85,7 @@ function initializeGraph(){
 			    .attr("y", 6)
 			    .attr("dy", ".71em")
 			    .style("text-anchor", "end")
-			    .text(yAxisSelect.value);
+			    .text(yAxisUnit);
 
 		svg.selectAll("dot")
 			.data(data)
@@ -113,8 +113,8 @@ function initializeGraph(){
 					// // setting up framework for second view
 					// var relatedMovies = findRelatedMovies(d.MovieId);
 					// newBubbleChart(relatedMovies);
-					console.log(formattedSimilarMovies(d, 'average rating', yAxisSelect.value, 4));
-					newBubbleChart(formattedSimilarMovies(d, 'average rating', yAxisSelect.value, 4));
+					console.log(formattedSimilarMovies(d, 'average rating', yAxisUnit, 4));
+					newBubbleChart(formattedSimilarMovies(d, 'average rating', yAxisUnit, 4));
 					console.log("graph clicked");
 				});
 

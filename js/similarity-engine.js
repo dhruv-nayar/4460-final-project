@@ -24,7 +24,7 @@ function formattedSimilarMovies(movie, unit, displayUnit, k){
 	similarMovies.forEach(function(movie){
 		var movieInfo = {};
 		movieInfo['text'] = movie.title;
-		movieInfo.count = movie[displayUnit];
+		movieInfo.count = String(movie[displayUnit]);
 		formattedSimilarMovies.push(movieInfo);
 	})
 	return formattedSimilarMovies;

@@ -6,6 +6,7 @@ d3.selection.prototype.moveToFront = function() {
 
 //function that registers whenever the dropdown has been changed. Changes scales and then moves dots
 function dropdownChange(unit){
+	yAxisUnit = unit;
 	rewriteYAxis(unit);
 	moveDots(unit);
 }
