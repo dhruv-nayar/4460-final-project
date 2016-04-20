@@ -37,7 +37,7 @@ html{
     transform-origin: left top;
 
     position: absolute;
-    bottom: 15%;
+    bottom: 20%;
     left: 0;
     white-space: nowrap;    
     font-size: 48px;
@@ -46,11 +46,13 @@ html{
 
 #select-container-x {
     color: white;
-    position: absolute;
-    bottom: 15%;
+    display: inline;
+    position: relative;
+    left: 225px;
+    /*bottom: 15%;
     left: 200px;
     top: 90px;
-    white-space: nowrap;    
+    */white-space: nowrap;    
     font-size: 48px;
 
 }
@@ -73,7 +75,7 @@ html{
 }
 
 #graph{
-
+  margin-top: -45px;
 }
 
 .padCheckbox{
