@@ -127,7 +127,7 @@ function initializeGraph(){
 
 function createGenreChecklist(lg){
 	lg.forEach(function(d){ 
-		$('#genre-container').append("<input type='checkbox' value = '"+d+"' id='genre"+d+"'/><label  class='padCheckbox' for='genre"+d+"'>"+d+"</label>");
+		$('#genre-container').append("<input type='checkbox' value = '"+d+"' id='genre"+d+"' onchange = 'checkboxClicked()'/><label  class='padCheckbox' for='genre"+d+"'>"+d+"</label>");
 		console.log('appended genre ' + d); 
 	})
 }

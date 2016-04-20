@@ -67,3 +67,7 @@ function yearChange(year){
 function filterDot(datapoint, year, genres){
 	console.log("dot filtered");
 }
+
+function checkboxClicked(){
+	
+}
