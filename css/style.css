@@ -5,8 +5,8 @@ html{
 
 .bubbleChart {
   min-width: 100px;
-  max-width: 800px;
-  height: 600px;
+  max-width: 600px;
+  height: 400px;
   margin: 0 auto;
 }
 
@@ -23,6 +23,27 @@ html{
   font-weight: 300;
 }
 
+#select-container {
+    color: white;
+     -webkit-transform: rotate(-90deg);
+    -webkit-transform-origin: left top;
+    -moz-transform: rotate(-90deg);
+    -moz-transform-origin: left top;
+    -ms-transform: rotate(-90deg);
+    -ms-transform-origin: left top;
+    -o-transform: rotate(-90deg);
+    -o-transform-origin: left top;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    white-space: nowrap;    
+    font-size: 48px;
+
+}
+
 #slider-container{
   position: fixed;
   width: 100%;
@@ -37,11 +58,15 @@ html{
 #button-container-text{
   color:white;
   font-weight: 300;
-  text-size: 1rem;
+  font-size: 1rem;
 }
 
 #graph{
 
+}
+
+.padCheckbox{
+  margin-right:17px;
 }
 
 .label{

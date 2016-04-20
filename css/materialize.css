@@ -5922,10 +5922,12 @@ button.btn-floating {
     cursor: pointer;
     line-height: 1.5rem;
     width: 100%;
+
     text-align: left;
     text-transform: none; }
     .dropdown-content li:hover, .dropdown-content li.active {
-      background-color: #eee; }
+      background-color: #eee; 
+    }
     .dropdown-content li > a, .dropdown-content li > span {
       font-size: 1.2rem;
       color: #26a69a;
@@ -6541,7 +6543,7 @@ form p:last-child {
   /* checkbox aspect */ }
   [type="checkbox"] + label {
     position: relative;
-    padding-left: 35px;
+    padding-left: 25px;
     cursor: pointer;
     display: inline-block;
     height: 25px;
@@ -6763,7 +6765,9 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     outline: none;
     height: 3rem;
     line-height: 3rem;
-    width: 100%;
+
+    /*changed this*/
+    width: 250px;
     font-size: 1rem;
     margin: 0 0 15px 0;
     padding: 0;

@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	initializeGraph();
+	$('select').material_select();
 });
 
 window.margin = {top: 50, right: 60, bottom: 30, left: 30};
@@ -111,31 +112,21 @@ function initializeGraph(){
 				.on("mouseout", tip.hide)
 				.on("click", function(d){
 					// // setting up framework for second view
-					// var relatedMovies = findRelatedMovies(d.MovieId);
-					// newBubbleChart(relatedMovies);
 					//console.log(formattedSimilarMovies(d, 'average rating', yAxisUnit, 2));
-					newBubbleChart(formattedSimilarMovies(d, 'average rating', yAxisUnit, 2));
+					newBubbleChart(formattedSimilarMovies(d, 'average rating', yAxisUnit, 4));
 					console.log("graph clicked");
 				});
 
-		//createGenreChecklist(lg);
+		createGenreChecklist(lg);
 
 	})
 
 	console.log('graph initialized');
 }
 
-/* algorithm to find 10 related movies to the clicked bubble */
-function findRelatedMovies(movieId) {
-
-}
-
 function createGenreChecklist(lg){
-	var legendContainer = document.getElementById('legend-container');
-	lg.forEach(function(d){
-		legendContainer.append("input")
-		.attr("type", "checkbox")
-		.value(d)
-		.innerHTML(d);
+	lg.forEach(function(d){ 
+		$('#genre-container').append("<input type='checkbox' id='genre"+d+"'/><label  class='padCheckbox' for='genre"+d+"'>"+d+"</label>");
+		console.log('appended genre ' + d); 
 	})
 }

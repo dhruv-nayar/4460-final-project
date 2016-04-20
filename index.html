@@ -37,22 +37,16 @@
 		<!-- row for selection and legend -->
 		<div class="row">
 			<!-- Y axis data selection, move this next to the y-axis so the axis label can just be the dropdown -->
-			<div id="select-container" class="col s6">
-				<select id="selection" onchange= "dropdownChange(this.value)">
-					<option value = "# oscar nominations"># Oscar Nominations</option>
-					<option value = "golden globe"># Golden Globe Nominations</option>
-					<option value = "gross ($)">Revenue</option>
-				</select>
-			</div>
 
-			<div id="button-container">
-			<span id="button-container-text">Average Rating vs.</span>
+
+<!-- 			<div id="button-container">
+				<span id="button-container-text">Average Rating vs.</span>
 				<a class="btn waves-effect waves-light" data-value = "# oscar nominations" onclick= "dropdownChange(this.getAttribute('data-value'))"># Oscars</a>
 				<a class="btn waves-effect waves-light" data-value = "golden globe" onclick= "dropdownChange(this.getAttribute('data-value'))"># Golden Globe</a>
 				<a class="btn waves-effect waves-light" data-value = "gross ($)" onclick= "dropdownChange(this.getAttribute('data-value'))">Gross Revenue</a>
-				<!-- <a id="newBubbleButton" class="btn waves-effect waves-light">New Bubble Chart</a> -->
-			</div>
-
+				<!-- <a id="newBubbleButton" class="btn waves-effect waves-light">New Bubble Chart</a>
+			</div> -->
+			<h2 class="center white-text"> Are the Oscars <span class="strong"> FAKE? </span></h2>
 			<!-- Legend will be added inside this element -->
 			<div id = "legend-container" class="col s3">
 			</div>
@@ -61,11 +55,21 @@
 		<!-- row for both views -->
 		<div class="row">
 			<!-- X axis data selection (if needed) -->
-			<div class="col s12 m7">
+
+			<div id="select-container" class="">
+				<select id="selection" onchange= "dropdownChange(this.value)">
+					<option value = "# oscar nominations"># Oscar Nominations</option>
+					<option value = "golden globe"># Golden Globe Nominations</option>
+					<option value = "gross ($)">Revenue</option>
+				</select>
+			</div>
+			<div id="graph-container" class="col s12 m6">
 				<!-- Our graph will be added inside this divider element -->
 				<div id="graph"></div>
 			</div>
-			<div class="col s12 m4 offset-m1">
+			<div class="col s12 m6">
+				<div id="genre-container"></div>
+
 				<div class="bubbleChart"></div>
 			</div>
 			
@@ -85,4 +89,5 @@
 	function redrawGraph(obj){
 		dropdownChange(obj.getAttribute('data-value'));
 	}
+
 </script>
