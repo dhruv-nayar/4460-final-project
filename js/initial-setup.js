@@ -53,10 +53,14 @@ function initializeGraph(){
 						lg.add(g);
 					})
 				}
-			if(!isNaN(Number(d["gross ($)"])) && Number(d["gross ($)"]) >= 100000 && d['average rating'] >= 0 && d.metascore >= 0 && d['imdb rating'] >= 0){
-				data.push({"movieId": d.movieId, "title": d.title, "year": d.year, "gross ($)": +d["gross ($)"], 'average rating': +d["average rating"], 'imdb rating': +d['imdb rating'], 'metascore': +d['metascore'],'# oscar nominations': +d['# oscar nominations'], 'golden globe': +d['golden globe']});
+			if(!isNaN(Number(d["gross ($)"])) && Number(d["gross ($)"]) >= 100000 && d['average rating'] >= 0 && d.metascore >= 0 && d['imdb rating'] >= 0 && Number(d['imdb link']) >= 0){
+				data.push({"movieId": d.movieId, "title": d.title, "year": d.year, "gross ($)": +d["gross ($)"],
+				'average rating': +d["average rating"], 'imdb rating': +d['imdb rating'], 'metascore': +d['metascore'],
+				'# oscar nominations': +d['# oscar nominations'], 'golden globe': +d['golden globe'],
+				 'genres': d.genres.split('|'),'imdb_id': "tt" + d['imdb link']});
 			}
 		})
+
 
 		initializeSimilarityEngine(data);
 
@@ -95,7 +99,7 @@ function initializeGraph(){
 			.data(data)
 			.enter()
 				.append("circle")
-				.attr("class", "dot")
+				.attr("class","dot")
 				.attr("r", 4)
 				.attr("fill", function(d){
 					if (d.year == year.value && d['# oscar nominations'] > 0)
@@ -118,7 +122,9 @@ function initializeGraph(){
 				.on("click", function(d){
 					// // setting up framework for second view
 					console.log(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 2));
-					newBubbleChart(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 4));
+					console.log("imdb: " + d["imdb_id"]);
+					newBubbleChart(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 4), "test");
+
 					console.log("graph clicked");
 				});
 
@@ -131,7 +137,7 @@ function initializeGraph(){
 
 function createGenreChecklist(lg){
 	lg.forEach(function(d){
-		$('#genre-container').append("<input type='checkbox' value = '"+d+"' id='genre"+d+"'/><label  class='padCheckbox' for='genre"+d+"'>"+d+"</label>");
-		console.log('appended genre ' + d);
+		$('#genre-container').append("<input class = 'genre-checkbox' type='checkbox' value = '"+d+"' id='genre"+d+"' onchange = 'checkboxClicked()'/><label  class='padCheckbox' for='genre"+d+"'>"+d+"</label>");
+		//console.log('appended genre ' + d);
 	})
 }

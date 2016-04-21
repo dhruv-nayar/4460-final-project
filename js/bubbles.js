@@ -1,4 +1,4 @@
-$(document).ready(function(){ 
+$(document).ready(function(){
  // newBubbleChart(bubbles);
 
  //   $("#newBubbleButton").click(function(){
@@ -8,11 +8,12 @@ $(document).ready(function(){
  // });
 });
 
-var bubbles = [  {text: "Java", count: "236"}, {text: ".Net", count: "500"}, {text: "Php", count: "170"}, 
-{text: "Ruby", count: "123"}, {text: "D", count: "12"}, {text: "Python", count: "170"}, 
+var bubbles = [  {text: "Java", count: "236"}, {text: ".Net", count: "500"}, {text: "Php", count: "170"},
+{text: "Ruby", count: "123"}, {text: "D", count: "12"}, {text: "Python", count: "170"},
 {text: "C/C++", count: "382"}, {text: "Pascal", count: "10"}, {text: "Something", count: "170"}];
 
 function newBubbleChart(obj) {
+
   $(".bubbleChart").empty();
   var bubbleChart = new d3.svg.BubbleChart({
     supportResponsive: true,
@@ -46,7 +47,7 @@ function newBubbleChart(obj) {
           },
           attr: {dy: "65px"},
           centralClick: function() {
-            alert("Here is more details!!");
+            alert("Here is more detaasdfasdfsils!!");
           }
         }
       },

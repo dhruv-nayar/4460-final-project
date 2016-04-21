@@ -28,7 +28,8 @@ function formattedSimilarMovies(movie, unit, displayUnit, k){
 	similarMovies.forEach(function(movie){
 		var movieInfo = {};
 		movieInfo['text'] = movie.title;
-		movieInfo.count = String(movie[displayUnit]);
+		movieInfo['count'] = String(movie[displayUnit]);
+		movieInfo['imdb_id'] = movie.imdb_id;
 		formattedSimilarMovies.push(movieInfo);
 	})
 	return formattedSimilarMovies;
@@ -36,19 +37,19 @@ function formattedSimilarMovies(movie, unit, displayUnit, k){
 
 function crossOverPoint(a, l  , h , x, unit)
      {
- 
-         if(l>h) 
+
+         if(l>h)
              return -1;
- 
+
          if(a[h][unit]<=x[unit])
              return h;
- 
+
          if(x[unit]<a[l][unit])
              return l;
- 
- 
+
+
          mid = Math.floor(l + (h-l)/2);
- 
+
          if(a[mid][unit]<=x[unit] && a[mid+1][unit]>x[unit])
          {
              return mid;
@@ -59,7 +60,7 @@ function crossOverPoint(a, l  , h , x, unit)
          }
          else
          {
-            return crossOverPoint(a,l, mid-1, x, unit); 
+            return crossOverPoint(a,l, mid-1, x, unit);
          }
      }
 
@@ -73,11 +74,11 @@ function getKclosest(arr, x, k, n, unit)
     console.log(l);
     var r = l+1;   // Right index to search
     var count = 0; // To keep track of count of elements already printed
- 
+
     // If x is present in arr[], then reduce left index
     // Assumption: all elements in arr[] are distinct
     if (arr[l] == x) l--;
- 
+
     // Compare elements on left and right of crossover
     // point to find the k closest elements
     while (l >= 0 && r < n && count < k)
@@ -88,12 +89,12 @@ function getKclosest(arr, x, k, n, unit)
             similarMovies.push(arr[r++]);
         count++;
     }
- 
+
     // If there are no more elements on right side, then
     // print left elements
     while (count < k && l >= 0)
         similarMovies.push(arr[l--]), count++;
- 
+
     // If there are no more elements on left side, then
     // print right elements
     while (count < k && r < n)
