@@ -121,7 +121,7 @@ function initializeGraph(){
 					// // setting up framework for second view
 					console.log(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 2));
 					console.log("imdb: " + d["imdb_id"]);
-					newBubbleChart(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 4));
+					newBubbleChart(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 4), "test");
 
 					console.log("graph clicked");
 				});

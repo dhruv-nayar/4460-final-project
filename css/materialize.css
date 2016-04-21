@@ -5926,7 +5926,7 @@ button.btn-floating {
     text-align: left;
     text-transform: none; }
     .dropdown-content li:hover, .dropdown-content li.active {
-      background-color: #eee; 
+      background-color: #eee;
     }
     .dropdown-content li > a, .dropdown-content li > span {
       font-size: 1.2rem;
@@ -6772,12 +6772,13 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     margin: 0 0 15px 0;
     padding: 0;
     display: block; }
-  .select-wrapper span.caret {
-    color: initial;
-    position: absolute;
-    right: 0;
-    top: 16px;
-    font-size: 10px; }
+    .select-wrapper span.caret {
+        color: #fff;
+        position: absolute;
+        top: 16px;
+        MARGIN-LEFT: -15px;
+        font-size: 10px;
+      }
     .select-wrapper span.caret.disabled {
       color: rgba(0, 0, 0, 0.26); }
   .select-wrapper + label {

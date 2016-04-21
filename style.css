@@ -1,3 +1,4 @@
+
 html{
   background-color: #202020;
   overflow-y: hidden;
@@ -159,7 +160,7 @@ input[type=range]::-webkit-slider-thumb {
   transition: 0.3s; }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #ccc; 
+  background: #ccc;
 }
 
 input[type=range] {
@@ -217,3 +218,10 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #ccc; }
 
+.select-wrapper span.caret {
+    color: #fff;
+    position: absolute;
+    top: 16px;
+    MARGIN-LEFT: -15px;
+    font-size: 10px;
+  }

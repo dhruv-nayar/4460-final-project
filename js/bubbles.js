@@ -30,8 +30,7 @@ function newBubbleChart(obj) {
     data: {
       items: obj,
       eval: function (item) {return item.count;},
-      classed: function (item) {return item.text.split(" ").join("");},
-      imdb_id: function(item) {return item.imdb_id;}
+      classed: function (item) {return item.text.split(" ").join("");}
     },
     plugins: [
       {
@@ -48,7 +47,7 @@ function newBubbleChart(obj) {
           },
           attr: {dy: "65px"},
           centralClick: function() {
-            alert("Here is more details!!");
+            alert("Here is more detaasdfasdfsils!!");
           }
         }
       },
