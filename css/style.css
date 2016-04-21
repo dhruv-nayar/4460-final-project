@@ -117,7 +117,7 @@ html{
 /* d3 tooltip */
 
 .d3-tip {
-  line-height: 1;
+  line-height: 1.5;
   padding: 12px;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;

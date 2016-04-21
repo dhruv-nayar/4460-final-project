@@ -79,7 +79,7 @@ function yearChange(year){
 				d.genres.forEach(function(genre){
 					if(selectedGenres.indexOf(genre) != -1){
 						contained = 1
-						return false;
+						return 0;
 					}
 				});
 				return contained;
