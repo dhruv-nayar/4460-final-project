@@ -118,6 +118,16 @@ function initializeGraph(){
 					else
 						return 0.1;
 				})
+				.attr("stroke", function(d){
+					if (d['golden globe'] > 0 && d['# oscar nominations'] > 0){
+						return "yellow";
+					}
+				})
+				.attr("stroke-width", function(d){
+					if (d['golden globe'] > 0 && d['# oscar nominations'] > 0){
+						return 3;
+					}
+				})
 				.attr("cx", function(d){return xScale(d['average rating']) + margin.left;})
 				.attr("cy", function(d){return yScale(d['# oscar nominations']) - 6;})
 				.on("mouseover", tip.show)

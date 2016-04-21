@@ -69,21 +69,28 @@ function yearChange(year){
 				return "red";
 			}
 			else
-				return "none";
+				return "red";
 		})
 		.attr("opacity", function(d){
 			var contained = 0.1;
-			if(selectedGenres.length == 0)
-				return 1;
-			else{
-				d.genres.forEach(function(genre){
-					if(selectedGenres.indexOf(genre) != -1){
-						contained = 1
-						return 0;
-					}
-				});
-				return contained;
+			if (d.year == year){
+				//console.log(this);
+				//d3.select(this).moveToFront();
+				if(selectedGenres.length == 0)
+					return 1;
+				else{
+					d.genres.forEach(function(genre){
+						if(selectedGenres.indexOf(genre) != -1){
+							contained = 1
+							return 0;
+						}
+					});
+					return contained;
+				}
 			}
+			else
+				return 0.1;
+			
 			});
 }
 
