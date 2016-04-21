@@ -44,7 +44,7 @@ html{
 }
 
 .dot {
-  stroke: none;
+  stroke: #202020;
 }
 
 .tooltip {

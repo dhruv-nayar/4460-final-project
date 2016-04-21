@@ -98,16 +98,18 @@ function initializeGraph(){
 				.attr("class", "dot")
 				.attr("r", 4)
 				.attr("fill", function(d){
-					if (d.year == year.value)
+					if (d.year == year.value && d['# oscar nominations'] > 0)
 						return "red";
+					if (d.year == year.value && d['golden globe'] > 0)
+						return "yellow"
 					else
-						return "none";
+						return "red";
 				})
 				.attr("opacity", function(d){
 					if (d.year == year.value)
 						return 1;
 					else
-						return 0.3;
+						return 0.1;
 				})
 				.attr("cx", function(d){return xScale(d['average rating']) + margin.left;})
 				.attr("cy", function(d){return yScale(d['# oscar nominations']) - 6;})
