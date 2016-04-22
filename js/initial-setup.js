@@ -4,8 +4,8 @@ $(document).ready(function(){
 });
 
 window.margin = {top: 50, right: 60, bottom: 30, left: 30};
-window.width = 650 - margin.left - margin.right;
-window.height = 450 - margin.top - margin.bottom;
+window.width = 700 - margin.left - margin.right;
+window.height = 500 - margin.top - margin.bottom;
 
 // add the tooltip area to the webpage
 var tooltip = d3.select("body").append("div")
@@ -125,7 +125,7 @@ function initializeGraph(){
 				})
 				.attr("stroke-width", function(d){
 					if (d['golden globe'] > 0 && d['# oscar nominations'] > 0){
-						return 3;
+						return 2;
 					}
 				})
 				.attr("cx", function(d){return xScale(d['average rating']) + margin.left;})

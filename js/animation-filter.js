@@ -90,7 +90,7 @@ function yearChange(year){
 			}
 			else
 				return 0.1;
-			
+
 			});
 }
 
@@ -118,7 +118,7 @@ function filterDots(){
 				return contained;
 			}
 			});
-				
+
 	console.log("dots filtered");
 }
 
