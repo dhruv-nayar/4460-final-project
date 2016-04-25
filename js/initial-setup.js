@@ -28,6 +28,13 @@ var tip = d3.tip()
 
 console.log("added tooltip");
 
+//function for bringing current year to the front
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function(){
+  this.parentNode.appendChild(this);
+  });
+};
+
 function formatDollar(num) {
     var p = num.toFixed(2).split(".");
     return "$" + p[0].split("").reverse().reduce(function(acc, num, i, orig) {
@@ -108,60 +115,60 @@ function initializeGraph(){
 		svg.selectAll("dot")
 			.data(data)
 			.enter()
-				.append("circle")
-				.attr("class","dot")
-				.attr("r", 4)
-				.attr("fill", function(d){
-					var contained = "gray";
-					if (d.year == year.value){
-						//console.log(this);
-						//d3.select(this).moveToFront();
-						if(selectedGenres.length == 0)
-							return "red";
-						else{
-							d.genres.forEach(function(genre){
-								if(selectedGenres.indexOf(genre) != -1){
-									contained = "red";
-									return 0;
-								}
-							});
-							return contained;
-						}
+			.append("circle")
+			.attr("class","dot")
+			.attr("r", 4)
+			.attr("fill", function(d){
+				var contained = "gray";
+				if (d.year == year.value){
+					//console.log(this);
+					//d3.select(this).moveToFront();
+					if(selectedGenres.length == 0)
+						return "red";
+					else{
+						d.genres.forEach(function(genre){
+							if(selectedGenres.indexOf(genre) != -1){
+								contained = "red";
+								return 0;
+							}
+						});
+						return contained;
 					}
-					else
-						return backgroundColor;
-					})
-				.attr("opacity", function(d){
-					if (d.year == year.value){
-						// d3.select(this).moveToFront();
-						return 1;
-					}
-					else
-						return 0.1;
+				}
+				else
+					return backgroundColor;
 				})
-				// .attr("stroke", function(d){
-				// 	if (d['golden globe'] > 0 && d['# oscar nominations'] > 0){
-				// 		return "yellow";
-				// 	}
-				// })
-				// .attr("stroke-width", function(d){
-				// 	if (d['golden globe'] > 0 && d['# oscar nominations'] > 0){
-				// 		return 2;
-				// 	}
-				// })
-				.attr("cx", function(d){return xScale(d[xAxisUnit]) + margin.left;})
-				.attr("cy", function(d){return yScale(d[yAxisUnit]) - 6;})
-				.on("mouseover", tip.show)
-				.on("mouseout", tip.hide)
-				.on("click", function(d){
-					// // setting up framework for second view
-					selectedMovie = d;
-					console.log(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 2));
-					console.log("imdb: " + d["imdb_id"]);
-					newBubbleChart(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 4), "test");
+			.attr("opacity", function(d){
+				if (d.year == year.value){
+					// d3.select(this).moveToFront();
+					return 1;
+				}
+				else
+					return 0.1;
+			})
+			// .attr("stroke", function(d){
+			// 	if (d['golden globe'] > 0 && d['# oscar nominations'] > 0){
+			// 		return "yellow";
+			// 	}
+			// })
+			// .attr("stroke-width", function(d){
+			// 	if (d['golden globe'] > 0 && d['# oscar nominations'] > 0){
+			// 		return 2;
+			// 	}
+			// })
+			.attr("cx", function(d){return xScale(d[xAxisUnit]) + margin.left;})
+			.attr("cy", function(d){return yScale(d[yAxisUnit]) - 6;})
+			.on("mouseover", tip.show)
+			.on("mouseout", tip.hide)
+			.on("click", function(d){
+				// // setting up framework for second view
+				selectedMovie = d;
+				console.log(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 2));
+				console.log("imdb: " + d["imdb_id"]);
+				newBubbleChart(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 4), "test");
 
-					console.log("graph clicked");
-				});
+				console.log("graph clicked");
+			});
 
 		createGenreChecklist(lg);
 

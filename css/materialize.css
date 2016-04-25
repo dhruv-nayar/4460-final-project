@@ -6758,7 +6758,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   position: relative; }
   .select-wrapper input.select-dropdown {
     position: relative;
-    cursor: pointer;
+    cursor: pointer;  
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #9e9e9e;
