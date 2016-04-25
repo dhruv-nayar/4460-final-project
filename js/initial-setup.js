@@ -20,12 +20,19 @@ var tip = d3.tip()
 				"<strong>Avg Rating: </strong><span style='color:lightblue'> " + d['average rating'] + "/5</span><br />"+
 				"<strong>IMDB Rating: </strong><span style='color:lightblue'> " + d['imdb rating'] + "/10</span><br />"+
 				"<strong>Metascore Rating: </strong><span style='color:lightblue'> " + d['metascore'] + "/100</span><br />"+
-				"<strong>Revenue: </strong><span style='color:#19C800'>$" + d["gross ($)"] + "</span><br />"+
+				"<strong>Revenue: </strong><span style='color:#19C800'>" + formatDollar(d["gross ($)"]) + "</span><br />"+
 				"<strong>Oscar Nominations: </strong><span style='color:red'> " + d['# oscar nominations'] + "</span><br />"+
 				"<strong>Golden Globe Nominations: </strong><span style='color:yellow'> " + d['golden globe'] + "</span></div><br />";
 	});
 
 console.log("added tooltip");
+
+function formatDollar(num) {
+    var p = num.toFixed(2).split(".");
+    return "$" + p[0].split("").reverse().reduce(function(acc, num, i, orig) {
+        return  num + (i && !(i % 3) ? "," : "") + acc;
+    }, "") + "." + p[1];
+}
 
 function initializeGraph(){
 

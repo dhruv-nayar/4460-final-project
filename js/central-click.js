@@ -25,8 +25,11 @@ d3.svg.BubbleChart.define("central-click", function (options) {
   })();
 
   self.reset = (function (node) {
+
     var original = self.reset;
     return function (node) {
+      console.log("NODE");
+      console.log(node);
       var fn = original.apply(this, arguments);
       node.select("text.central-click").remove();
       return fn;
