@@ -131,3 +131,21 @@ function checkboxClicked(){
 	console.log(selectedGenres);
 	filterDots();
 }
+
+function selectAll(box){
+	label = document.getElementById('select-all-label');
+	if($(box).is(':checked')){
+		label.innerHTML = 'Deselect All';
+		$('.genre-checkbox').each(function(d){
+			$(this).prop('checked','true');
+			//checkboxClicked();
+		})
+	}
+	else{
+		label.innerHTML = 'Select All';
+		$('.genre-checkbox').each(function(d){
+			$(this).attr('checked','false');
+			//checkboxClicked();
+		})
+	}
+}
