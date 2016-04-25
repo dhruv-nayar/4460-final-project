@@ -1,5 +1,6 @@
 window.selectedGenres = [];
 window.backgroundOpacity = 0.1;
+window.backgroundColor = "gray";
 
 d3.selection.prototype.moveToFront = function() {
   return this.each(function(){
@@ -38,6 +39,26 @@ function moveDots(){
 		.attr("cy", function(d){
 			return yScale(d[yAxisUnit]) - 6;
 		})
+		.attr("fill", function(d){
+			var contained = "gray";
+			if (d.year == year){
+				//console.log(this);
+				//d3.select(this).moveToFront();
+				if(selectedGenres.length == 0)
+					return "red";
+				else{
+					d.genres.forEach(function(genre){
+						if(selectedGenres.indexOf(genre) != -1){
+							contained = "red";
+							return 0;
+						}
+					});
+					return contained;
+				}
+			}
+			else
+				return backgroundColor;
+			})
 		.attr("opacity", function(d){
 			var contained = backgroundOpacity;
 			if(d.year == year){
@@ -69,19 +90,26 @@ function yearChange(year){
 			return 8;
 		})
 		.attr("fill", function(d){
+			var contained = "gray";
 			if (d.year == year){
-				if (d['# oscar nominations'] > 0 && d['golden globe'] == 0)
+				//console.log(this);
+				//d3.select(this).moveToFront();
+				if(selectedGenres.length == 0)
 					return "red";
-				else if (d['golden globe'] > 0 && d['# oscar nominations'] == 0)
-					return "yellow";
-				else if (d['# oscar nominations'] > 0 && d['golden globe'] > 0){
-					colorCircles(d.movieId, "yellow", "red");
-	    			return "url(#grad" + d.movieId + ")";
+				else{
+					d.genres.forEach(function(genre){
+						if(selectedGenres.indexOf(genre) != -1){
+							contained = "red";
+							return 0;
+						}
+					});
+					return contained;
 				}
-				else return "gray";
 			}
-			else return "gray";
-		})
+			else
+				return backgroundColor;
+
+			})
 		.attr("opacity", function(d){
 			var contained = backgroundOpacity;
 			if (d.year == year){
@@ -116,6 +144,27 @@ function filterDots(){
 		.delay(function(d){
 			return 0;
 		})
+		.attr("fill", function(d){
+			var contained = "gray";
+			if (d.year == year){
+				//console.log(this);
+				//d3.select(this).moveToFront();
+				if(selectedGenres.length == 0)
+					return "red";
+				else{
+					d.genres.forEach(function(genre){
+						if(selectedGenres.indexOf(genre) != -1){
+							contained = "red";
+							return 0;
+						}
+					});
+					return contained;
+				}
+			}
+			else
+				return backgroundColor;
+
+			})
 		.attr("opacity", function(d){
 			var contained = backgroundOpacity;
 			if (d.year == year){

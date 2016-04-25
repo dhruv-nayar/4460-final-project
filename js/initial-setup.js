@@ -36,7 +36,7 @@ function formatDollar(num) {
 
 function initializeGraph(){
 
-	window.yAxisUnit = "# oscar nominations";
+	window.yAxisUnit = "# award nominations";
 	window.xAxisUnit = "average rating";
 	var year = document.getElementById('year');
 
@@ -66,8 +66,7 @@ function initializeGraph(){
 			if(!isNaN(Number(d["gross ($)"])) && Number(d["gross ($)"]) >= 100000 && d['average rating'] >= 0 && d.metascore >= 0 && d['imdb rating'] >= 0 && Number(d['imdb link']) >= 0){
 				data.push({"movieId": d.movieId, "title": d.title, "year": d.year, "gross ($)": +d["gross ($)"],
 				'average rating': +d["average rating"], 'imdb rating': +d['imdb rating'], 'metascore': +d['metascore'],
-				'# oscar nominations': +d['# oscar nominations'], 'golden globe': +d['golden globe'],
-				 'genres': d.genres.split('|'),'imdb_id': "tt" + d['imdb link']});
+				 'genres': d.genres.split('|'),'imdb_id': "tt" + d['imdb link'], '# award nominations': +d['# award nominations']});
 			}
 		})
 
@@ -112,19 +111,25 @@ function initializeGraph(){
 				.attr("class","dot")
 				.attr("r", 4)
 				.attr("fill", function(d){
-					if(d.year == year.value){
-						if (d['# oscar nominations'] > 0 && d['golden globe'] == 0)
+					var contained = "gray";
+					if (d.year == year.value){
+						//console.log(this);
+						//d3.select(this).moveToFront();
+						if(selectedGenres.length == 0)
 							return "red";
-						else if (d['golden globe'] > 0 && d['# oscar nominations'] == 0)
-							return "yellow";
-						else if (d['# oscar nominations'] > 0 && d['golden globe'] > 0){
-							colorCircles(d.movieId, "yellow", "red");
-	            			return "url(#grad" + d.movieId + ")";
+						else{
+							d.genres.forEach(function(genre){
+								if(selectedGenres.indexOf(genre) != -1){
+									contained = "red";
+									return 0;
+								}
+							});
+							return contained;
 						}
-						else return "gray";
 					}
-					else return "gray";
-				})
+					else
+						return backgroundColor;
+					})
 				.attr("opacity", function(d){
 					if (d.year == year.value){
 						// d3.select(this).moveToFront();
@@ -143,8 +148,8 @@ function initializeGraph(){
 				// 		return 2;
 				// 	}
 				// })
-				.attr("cx", function(d){return xScale(d['average rating']) + margin.left;})
-				.attr("cy", function(d){return yScale(d['# oscar nominations']) - 6;})
+				.attr("cx", function(d){return xScale(d[xAxisUnit]) + margin.left;})
+				.attr("cy", function(d){return yScale(d[yAxisUnit]) - 6;})
 				.on("mouseover", tip.show)
 				.on("mouseout", tip.hide)
 				.on("click", function(d){
