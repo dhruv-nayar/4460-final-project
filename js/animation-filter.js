@@ -70,12 +70,17 @@ function yearChange(year){
 		})
 		.attr("fill", function(d){
 			if (d.year == year){
-				//console.log(this);
-				//d3.select(this).moveToFront();
-				return "red";
+				if (d['# oscar nominations'] > 0 && d['golden globe'] == 0)
+					return "red";
+				else if (d['golden globe'] > 0 && d['# oscar nominations'] == 0)
+					return "yellow";
+				else if (d['# oscar nominations'] > 0 && d['golden globe'] > 0){
+					colorCircles(d.movieId, "yellow", "red");
+	    			return "url(#grad" + d.movieId + ")";
+				}
+				else return "gray";
 			}
-			else
-				return "red";
+			else return "gray";
 		})
 		.attr("opacity", function(d){
 			var contained = backgroundOpacity;
@@ -115,7 +120,6 @@ function filterDots(){
 			var contained = backgroundOpacity;
 			if (d.year == year){
 				//console.log(this);
-				//d3.select(this).moveToFront();
 				if(selectedGenres.length == 0)
 					return 1;
 				else{
@@ -127,6 +131,7 @@ function filterDots(){
 					});
 					return contained;
 				}
+				d3.select(this).moveToFront();
 			}
 			else
 				return backgroundOpacity;
@@ -134,6 +139,8 @@ function filterDots(){
 
 	console.log("dots filtered");
 }
+
+
 
 function checkboxClicked(){
 	selectedGenres = [];

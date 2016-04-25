@@ -112,29 +112,37 @@ function initializeGraph(){
 				.attr("class","dot")
 				.attr("r", 4)
 				.attr("fill", function(d){
-					if (d.year == year.value && d['# oscar nominations'] > 0)
-						return "red";
-					if (d.year == year.value && d['golden globe'] > 0)
-						return "yellow"
-					else
-						return "red";
+					if(d.year == year.value){
+						if (d['# oscar nominations'] > 0 && d['golden globe'] == 0)
+							return "red";
+						else if (d['golden globe'] > 0 && d['# oscar nominations'] == 0)
+							return "yellow";
+						else if (d['# oscar nominations'] > 0 && d['golden globe'] > 0){
+							colorCircles(d.movieId, "yellow", "red");
+	            			return "url(#grad" + d.movieId + ")";
+						}
+						else return "gray";
+					}
+					else return "gray";
 				})
 				.attr("opacity", function(d){
-					if (d.year == year.value)
+					if (d.year == year.value){
+						// d3.select(this).moveToFront();
 						return 1;
+					}
 					else
 						return 0.1;
 				})
-				.attr("stroke", function(d){
-					if (d['golden globe'] > 0 && d['# oscar nominations'] > 0){
-						return "yellow";
-					}
-				})
-				.attr("stroke-width", function(d){
-					if (d['golden globe'] > 0 && d['# oscar nominations'] > 0){
-						return 2;
-					}
-				})
+				// .attr("stroke", function(d){
+				// 	if (d['golden globe'] > 0 && d['# oscar nominations'] > 0){
+				// 		return "yellow";
+				// 	}
+				// })
+				// .attr("stroke-width", function(d){
+				// 	if (d['golden globe'] > 0 && d['# oscar nominations'] > 0){
+				// 		return 2;
+				// 	}
+				// })
 				.attr("cx", function(d){return xScale(d['average rating']) + margin.left;})
 				.attr("cy", function(d){return yScale(d['# oscar nominations']) - 6;})
 				.on("mouseover", tip.show)
@@ -161,4 +169,13 @@ function createGenreChecklist(lg){
 		//console.log('appended genre ' + d);
 	})
 	$('#genre-container').append("<input id = 'select-all' class = 'genre-checkbox' type='checkbox' onchange='selectAll(this)'/><label id = 'select-all-label' for = 'select-all' class='padCheckbox'>Select All</label>");
+}
+
+// Color for each circle
+function colorCircles(id, color1, color2){
+    var grad = svg.append("defs")
+        .append("linearGradient").attr("id", "grad" + id)
+        .attr("x1", "100%").attr("x2", "0%").attr("y1", "0%").attr("y2", "0%");
+    grad.append("stop").attr("offset", "50%").style("stop-color", color1);
+    grad.append("stop").attr("offset", "50%").style("stop-color", color2);
 }
