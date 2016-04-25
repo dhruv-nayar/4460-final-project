@@ -1,4 +1,5 @@
 window.selectedGenres = [];
+window.backgroundOpacity = 0.1;
 
 d3.selection.prototype.moveToFront = function() {
   return this.each(function(){
@@ -38,7 +39,7 @@ function moveDots(){
 			return yScale(d[yAxisUnit]) - 6;
 		})
 		.attr("opacity", function(d){
-			var contained = 0.1;
+			var contained = backgroundOpacity;
 			if(d.year == year){
 				if(selectedGenres.length == 0)
 					return 1;
@@ -53,7 +54,7 @@ function moveDots(){
 				}
 			}
 			else
-				return 0.1;
+				return backgroundOpacity;
 		});
 }
 
@@ -77,7 +78,7 @@ function yearChange(year){
 				return "red";
 		})
 		.attr("opacity", function(d){
-			var contained = 0.1;
+			var contained = backgroundOpacity;
 			if (d.year == year){
 				//console.log(this);
 				//d3.select(this).moveToFront();
@@ -94,7 +95,7 @@ function yearChange(year){
 				}
 			}
 			else
-				return 0.1;
+				return backgroundOpacity;
 
 			});
 }
@@ -111,7 +112,7 @@ function filterDots(){
 			return 0;
 		})
 		.attr("opacity", function(d){
-			var contained = 0.1;
+			var contained = backgroundOpacity;
 			if (d.year == year){
 				//console.log(this);
 				//d3.select(this).moveToFront();
@@ -128,7 +129,7 @@ function filterDots(){
 				}
 			}
 			else
-				return 0.1;
+				return backgroundOpacity;
 			});
 
 	console.log("dots filtered");
