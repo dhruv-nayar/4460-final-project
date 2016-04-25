@@ -22,6 +22,7 @@ function dropdownXChange(unit){
 
 //function that moves dots when the scales are changed
 function moveDots(){
+	var year = document.getElementById('year').value;
 	svg.selectAll('.dot')
 		.transition()
 		.duration(function(d){
@@ -38,18 +39,22 @@ function moveDots(){
 		})
 		.attr("opacity", function(d){
 			var contained = 0.1;
-			if(selectedGenres.length == 0)
-				return 1;
-			else{
-				d.genres.forEach(function(genre){
-					if(selectedGenres.indexOf(genre) != -1){
-						contained = 1
-						return false;
-					}
-				});
-				return contained;
+			if(d.year == year){
+				if(selectedGenres.length == 0)
+					return 1;
+				else{
+					d.genres.forEach(function(genre){
+						if(selectedGenres.indexOf(genre) != -1){
+							contained = 1
+							return false;
+						}
+					});
+					return contained;
+				}
 			}
-			});
+			else
+				return 0.1;
+		});
 }
 
 //function that filters based on selected year, will be changed onces filterDot is implemented
@@ -81,7 +86,7 @@ function yearChange(year){
 				else{
 					d.genres.forEach(function(genre){
 						if(selectedGenres.indexOf(genre) != -1){
-							contained = 1
+							contained = 1;
 							return 0;
 						}
 					});
@@ -96,6 +101,7 @@ function yearChange(year){
 
 //this function will be used in place of all of the filtering boolean expressions so we can check and combine multiple filters without having to write them into numerous places
 function filterDots(){
+	var year = document.getElementById('year').value;
 	svg.selectAll('.dot')
 		.transition()
 		.duration(function(d){
@@ -106,17 +112,23 @@ function filterDots(){
 		})
 		.attr("opacity", function(d){
 			var contained = 0.1;
-			if(selectedGenres.length == 0)
-				return 1;
-			else{
-				d.genres.forEach(function(genre){
-					if(selectedGenres.indexOf(genre) != -1){
-						contained = 1
-						return false;
-					}
-				});
-				return contained;
+			if (d.year == year){
+				//console.log(this);
+				//d3.select(this).moveToFront();
+				if(selectedGenres.length == 0)
+					return 1;
+				else{
+					d.genres.forEach(function(genre){
+						if(selectedGenres.indexOf(genre) != -1){
+							contained = 1;
+							return 0;
+						}
+					});
+					return contained;
+				}
 			}
+			else
+				return 0.1;
 			});
 
 	console.log("dots filtered");
