@@ -6,6 +6,7 @@ $(document).ready(function(){
 window.margin = {top: 50, right: 60, bottom: 30, left: 30};
 window.width = 700 - margin.left - margin.right;
 window.height = 500 - margin.top - margin.bottom;
+window.selectedMovie = "";
 
 // add the tooltip area to the webpage
 var tooltip = d3.select("body").append("div")
@@ -154,6 +155,7 @@ function initializeGraph(){
 				.on("mouseout", tip.hide)
 				.on("click", function(d){
 					// // setting up framework for second view
+					selectedMovie = d;
 					console.log(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 2));
 					console.log("imdb: " + d["imdb_id"]);
 					newBubbleChart(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 4), "test");

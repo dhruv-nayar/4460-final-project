@@ -10,13 +10,16 @@ d3.selection.prototype.moveToFront = function() {
 
 //function that registers whenever the dropdown has been changed. Changes scales and then moves dots
 function dropdownYChange(unit){
+	if(selectedMovie != "")
+		newBubbleChart(formattedSimilarMovies(selectedMovie, xAxisUnit, yAxisUnit, 4), "test");
 	yAxisUnit = unit;
 	rewriteYAxis(unit);
 	moveDots();
 }
 
 function dropdownXChange(unit){
-	console.log(unit);
+	// if(selectedMovie != "")
+	// 	newBubbleChart(formattedSimilarMovies(selectedMovie, xAxisUnit, yAxisUnit, 4), "test");
 	xAxisUnit = unit;
 	rewriteXAxis(unit);
 	moveDots();
