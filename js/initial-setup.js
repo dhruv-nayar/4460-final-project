@@ -22,8 +22,8 @@ var tip = d3.tip()
 				"<strong>IMDB Rating: </strong><span style='color:lightblue'> " + d['imdb rating'] + "/10</span><br />"+
 				"<strong>Metascore Rating: </strong><span style='color:lightblue'> " + d['metascore'] + "/100</span><br />"+
 				"<strong>Revenue: </strong><span style='color:#19C800'>" + formatDollar(d["gross ($)"]) + "</span><br />"+
-				"<strong>Oscar Nominations: </strong><span style='color:red'> " + d['# oscar nominations'] + "</span><br />"+
-				"<strong>Golden Globe Nominations: </strong><span style='color:yellow'> " + d['golden globe'] + "</span></div><br />";
+				"<strong># Award Wins: </strong><span style='color:red'> " + d['# award wins'] + "</span><br />"+
+				"<strong># Award Nominations: </strong><span style='color:yellow'> " + d['# award nominations'] + "</span></div><br />";
 	});
 
 console.log("added tooltip");
@@ -67,7 +67,7 @@ function initializeGraph(){
 			if(!isNaN(Number(d["gross ($)"])) && Number(d["gross ($)"]) >= 100000 && d['average rating'] >= 0 && d.metascore >= 0 && d['imdb rating'] >= 0 && Number(d['imdb link']) >= 0){
 				data.push({"movieId": d.movieId, "title": d.title, "year": d.year, "gross ($)": +d["gross ($)"],
 				'average rating': +d["average rating"], 'imdb rating': +d['imdb rating'], 'metascore': +d['metascore'],
-				 'genres': d.genres.split('|'),'imdb_id': "tt" + d['imdb link'], '# award nominations': +d['# award nominations']});
+				 'genres': d.genres.split('|'),'imdb_id': "tt" + d['imdb link'], '# award nominations': +d['# award nominations'], "# award wins": +d["# award wins"]});
 			}
 		})
 

@@ -56,10 +56,10 @@ function newBubbleChart(obj) {
         options: {
           format: [
             {// Line #0
-              textField: "count",
-              classed: {count: true},
+              textField: "text",
+              classed: {text: true},
               style: {
-                "font-size": "28px",
+                "font-size": "15px",
                 "font-family": "Source Sans Pro, sans-serif",
                 "text-anchor": "middle",
                 fill: "white"
@@ -71,8 +71,8 @@ function newBubbleChart(obj) {
               }
             },
             {// Line #1
-              textField: "text",
-              classed: {text: true},
+              textField: "count",
+              classed: {count: true},
               style: {
                 "font-size": "14px",
                 "font-family": "Source Sans Pro, sans-serif",

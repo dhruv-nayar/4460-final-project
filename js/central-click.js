@@ -16,9 +16,9 @@ d3.svg.BubbleChart.define("central-click", function (options) {
     return function (node) {
       var fn = original.apply(this, arguments);
       self.event.on("click", function(node) {
-        if (node.selectAll("text.central-click")[0].length === 1) {
-          window.open("http://www.imdb.com/title/"+self.circlePositions[0]['item'].imdb_id+ "/");
-        }
+        // if (node.selectAll("text.central-click")[0].length === 1) {
+        //   window.open("http://www.imdb.com/title/"+self.circlePositions[0]['item'].imdb_id+ "/");
+        // }
       });
       return fn;
     };
@@ -28,8 +28,6 @@ d3.svg.BubbleChart.define("central-click", function (options) {
 
     var original = self.reset;
     return function (node) {
-      console.log("NODE");
-      console.log(node);
       var fn = original.apply(this, arguments);
       node.select("text.central-click").remove();
       return fn;
