@@ -47,7 +47,7 @@ function newBubbleChart(obj) {
           },
           attr: {dy: "65px"},
           centralClick: function() {
-            alert("Here is more detaasdfasdfsils!!");
+            alert("Here is more details!!");
           }
         }
       },
