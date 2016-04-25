@@ -16,6 +16,7 @@ var tooltip = d3.select("body").append("div")
 var tip = d3.tip()
 	.attr('class', 'd3-tip')
 	.offset([-10, 0])
+	.direction('e')
 	.html(function(d) {
 		return "<div class='center'><span style='font-size:30px'>" + d.title + " (" + d.year+ ")</span><br /><br />"+
 				"<strong>Avg Rating: </strong><span style='color:lightblue'> " + d['average rating'] + "/5</span><br />"+
@@ -24,6 +25,7 @@ var tip = d3.tip()
 				"<strong>Revenue: </strong><span style='color:#19C800'>" + formatDollar(d["gross ($)"]) + "</span><br />"+
 				"<strong># Award Wins: </strong><span style='color:red'> " + d['# award wins'] + "</span><br />"+
 				"<strong># Award Nominations: </strong><span style='color:yellow'> " + d['# award nominations'] + "</span></div><br />";
+
 	});
 
 console.log("added tooltip");
