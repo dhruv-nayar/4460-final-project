@@ -226,20 +226,11 @@ function showAllYearsClicked(){
 	console.log("changed opacity to " + window.backgroundOpacity);
 }
 
+window.checked = -1;
+
 function selectAll(box){
-	label = document.getElementById('select-all-label');
-	if($(box).is(':checked')){
-		label.innerHTML = 'Deselect All';
 		$('.genre-checkbox').each(function(d){
-			$(this).prop('checked','true');
-			//checkboxClicked();
+			$(this).prop('checked','');
+			checkboxClicked();
 		})
-	}
-	else{
-		label.innerHTML = 'Select All';
-		$('.genre-checkbox').each(function(d){
-			$(this).attr('checked','false');
-			//checkboxClicked();
-		})
-	}
 }
