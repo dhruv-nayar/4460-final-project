@@ -189,13 +189,13 @@ function filterDots(){
 			else return backgroundOpacity;
 		});
 
-	// svg.selectAll("dot")
+	// svg.selectAll(".dot")
 	// 	.on("mouseover", function(d){
-	// 		if (window.backgroundOpacity == 0.0) console.log("opacity 0");
+	// 		if (d.opacity == 0.0) console.log("opacity 0");
 	// 		else return tip.show;
 	// 	})
 	// 	.on("mouseout", function(d){
-	// 		if (window.backgroundOpacity == 0.0) return;
+	// 		if (d.opacity == 0.0) return;
 	// 		else return tip.hide;
 	// 	});
 

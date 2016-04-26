@@ -6761,7 +6761,9 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
     cursor: pointer;  
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #9e9e9e;
+
+    /*changed this*/
+    border-bottom: 0px solid #9e9e9e;
     outline: none;
     height: 3rem;
     line-height: 3rem;

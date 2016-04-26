@@ -51,27 +51,14 @@ html{
     left: 225px;
     /*bottom: 15%;
     left: 200px;
-    top: 90px;
-    */white-space: nowrap;
+    top: 90px;*/
+    white-space: nowrap;
     font-size: 48px;
 
 }
 
 #slider-container{
-  position: fixed;
-  width: 100%;
-  bottom: -25px;
-}
 
-#button-container{
-  padding-left:40px;
-  padding-top: 20px;
-}
-
-#button-container-text{
-  color:white;
-  font-weight: 300;
-  font-size: 1rem;
 }
 
 #graph{
@@ -181,7 +168,7 @@ input[type=range] {
   padding: 0; }
 
 input[type=range] + .thumb {
-  position: absolute;
+  display: none;
   border: none;
   height: 0;
   width: 0;

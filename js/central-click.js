@@ -6,8 +6,6 @@ d3.svg.BubbleChart.define("central-click", function (options) {
   var self = this;
 
   self.setup = (function (node) {
-    // console.log("NODE");
-    // console.log(node);
     var original = self.setup;
     return function (node) {
       var fn = original.apply(this, arguments);
