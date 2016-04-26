@@ -166,6 +166,7 @@ function initializeGraph(){
 				// // setting up framework for second view
 				selectedMovie = d;
 				newBubbleChart(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 4));
+				$('#movieTitle')
 				console.log("graph clicked");
 			});
 
