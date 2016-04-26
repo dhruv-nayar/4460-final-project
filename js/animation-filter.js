@@ -15,14 +15,16 @@ function dropdownYChange(unit){
 	yAxisUnit = unit;
 	rewriteYAxis(unit);
 	moveDots();
+	$("#movieName").html(similarityTitle());
 }
 
 function dropdownXChange(unit){
-	// if(selectedMovie != "")
-	// 	newBubbleChart(formattedSimilarMovies(selectedMovie, xAxisUnit, yAxisUnit, 4), "test");
+	if(selectedMovie != "")
+		newBubbleChart(formattedSimilarMovies(selectedMovie, xAxisUnit, yAxisUnit, 4), "test");
 	xAxisUnit = unit;
 	rewriteXAxis(unit);
 	moveDots();
+	$("#movieName").html(similarityTitle());
 }
 
 //function that moves dots when the scales are changed

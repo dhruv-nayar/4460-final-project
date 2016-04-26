@@ -10,12 +10,12 @@ function initializeSimilarityEngine(rawData){
     sortedArrays['# award wins'] = sortArrayByUnit(rawData.slice(), '# award wins');
     sortedArrays['gross ($)'] = sortArrayByUnit(rawData.slice(), 'gross ($)');
 
-    textForm['average rating'] = 'average ratings';
-    textForm['imdb rating'] = 'imdb ratings';
-    textForm['metascore'] = 'metascores';
-    textForm['# award nominations'] = '# award nominations';
-    textForm['# award wins'] = '# award wins';
-    textForm['gross ($)'] = 'revenues ($)';
+    textForm['average rating'] = 'Average Ratings';
+    textForm['imdb rating'] = 'IMDB Ratings';
+    textForm['metascore'] = 'Metascores';
+    textForm['# award nominations'] = '# Award Nominations';
+    textForm['# award wins'] = '# Award Wins';
+    textForm['gross ($)'] = 'Revenues ($)';
 
 	console.dir(sortedArrays);
 }

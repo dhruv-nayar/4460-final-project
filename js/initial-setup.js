@@ -62,6 +62,7 @@ function initializeGraph(){
 	window.xScale = d3.scale.linear().range([0, width]);
 	window.yScale = d3.scale.linear().range([height, 0]);
 
+
 	d3.csv("movies_edited.csv", function(error,data1){
 
 		window.data = [];
@@ -82,6 +83,7 @@ function initializeGraph(){
 
 
 		initializeSimilarityEngine(data);
+		$("#movieName").html(similarityTitle());
 
 
 		var xAxis = createXAxis(data, xScale, xAxisUnit);
