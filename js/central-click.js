@@ -1,11 +1,7 @@
 /**
  * CUSTOM central-click.js
  */
-// findIndex = function(similar_movie_dict){
-//   for i = 0; i < similar_movie_dict.length; i++) {
-//     if (similar_movie_dict.[i] ==)
-//   }
-// }
+
 d3.svg.BubbleChart.define("central-click", function (options) {
   var self = this;
 
@@ -16,16 +12,13 @@ d3.svg.BubbleChart.define("central-click", function (options) {
     return function (node) {
       var fn = original.apply(this, arguments);
       self.event.on("click", function(node) {
-        // if (node.selectAll("text.central-click")[0].length === 1) {
-        //   window.open("http://www.imdb.com/title/"+self.circlePositions[0]['item'].imdb_id+ "/");
-        // }
+
       });
       return fn;
     };
   })();
 
   self.reset = (function (node) {
-
     var original = self.reset;
     return function (node) {
       var fn = original.apply(this, arguments);
@@ -39,6 +32,10 @@ d3.svg.BubbleChart.define("central-click", function (options) {
     return function (node) {
       var fn = original.apply(this, arguments);
       var transition = self.getTransition().centralNode;
+      var temp = node[0];
+      var temp2 = temp[0].__data__;
+      var cur_imdbID = temp2.item.imdb_id;
+      console.log(cur_imdbID);
       transition.each("end", function() {
         node.append("text").classed({"central-click": true})
           .attr(options.attr)
