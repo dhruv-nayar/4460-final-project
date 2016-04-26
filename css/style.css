@@ -6,7 +6,7 @@ html{
 .bubbleChart {
   min-width: 100px;
   max-width: 600px;
-  height: 350px;
+  height: 300px;
   margin: 0 auto;
 }
 
@@ -131,19 +131,6 @@ html{
   margin: -1px 0 0 0;
   top: 100%;
   left: 0;
-}
-
-.scatterplot {
-  float: left;
-}
-
-.nutrition-label {
-  float: left;
-  margin: 0px 0px 0px 50px;
-  width: 250px;
-  height: 375px;
-  background: #404040;
-  color: #fff;
 }
 
 .wrap {
