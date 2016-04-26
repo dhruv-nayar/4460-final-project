@@ -229,20 +229,8 @@ function showAllYearsClicked(){
 window.checked = -1;
 
 function selectAll(box){
-	label = document.getElementById('select-all-label');
-	checked *= -1;
-	if(checked == 1){
-		label.innerHTML = 'Deselect All';
-		$('.genre-checkbox').each(function(d){
-			$(this).prop('checked','true');
-			checkboxClicked();
-		})
-	}
-	else{
-		label.innerHTML = 'Select All';
 		$('.genre-checkbox').each(function(d){
 			$(this).prop('checked','');
-			//checkboxClicked();
+			checkboxClicked();
 		})
-	}
 }

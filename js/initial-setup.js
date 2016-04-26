@@ -181,7 +181,7 @@ function createGenreChecklist(lg){
 		$('#genre-container').append("<input class = 'genre-checkbox' type='checkbox' value = '"+d+"' id='genre"+d+"' onclick = 'checkboxClicked()'/><label  class='padCheckbox' for='genre"+d+"'>"+d+"</label>");
 		//console.log('appended genre ' + d);
 	})
-	$('#genre-container').append("<input id = 'select-all' class = 'genre-checkbox' type='checkbox' onclick='selectAll(this)'/><label id = 'select-all-label' for = 'select-all' class='padCheckbox'>Select All</label>");
+	$('#genre-container').append("<a id = 'select-all' class = 'btn' onclick='selectAll(this)'>Reset Selection</a>");
 }
 
 // Color for each circle
