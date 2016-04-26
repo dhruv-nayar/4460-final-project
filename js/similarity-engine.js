@@ -21,15 +21,15 @@ function getKSimilarMovies(movie, unit, k){
 }
 
 function formattedSimilarMovies(movie, unit, displayUnit, k){
-	//console.log(displayUnit);
 	similarMovies = getKSimilarMovies(movie, unit, k);
+
 	var formattedSimilarMovies = [];
-	formattedSimilarMovies.push({'text': movie['title'], 'count': movie[displayUnit]});
+	formattedSimilarMovies.push({'text': movie['title'], 'count': movie[displayUnit], 'imdb_id': movie['imdb_id']});
 	similarMovies.forEach(function(movie){
 		var movieInfo = {};
 		movieInfo['text'] = movie.title;
 		movieInfo['count'] = String(movie[displayUnit]);
-		movieInfo['imdb_id'] = movie.imdb_id;
+		movieInfo['imdb_id'] = movie['imdb_id'];
 		formattedSimilarMovies.push(movieInfo);
 	})
 	return formattedSimilarMovies;

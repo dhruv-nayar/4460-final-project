@@ -36,9 +36,8 @@ function newBubbleChart(obj) {
       {
         name: "central-click",
         options: {
-          text: "(See more detail)",
           style: {
-            "font-size": "12px",
+            "font-size": "18px",
             "font-style": "italic",
             "font-family": "Source Sans Pro, sans-serif",
             //"font-weight": "700",
