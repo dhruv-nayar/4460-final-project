@@ -4,7 +4,7 @@ $(document).ready(function(){
 });
 
 window.margin = {top: 50, right: 60, bottom: 30, left: 30};
-window.width = 650 - margin.left - margin.right;
+window.width = 600 - margin.left - margin.right;
 window.height = 550 - margin.top - margin.bottom;
 window.selectedMovie = "";
 
@@ -168,7 +168,6 @@ function initializeGraph(){
 				// // setting up framework for second view
 				selectedMovie = d;
 				newBubbleChart(formattedSimilarMovies(d, xAxisUnit, yAxisUnit, 4));
-				$('#movieTitle')
 				console.log("graph clicked");
 			});
 
