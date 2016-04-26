@@ -136,7 +136,8 @@ function yearChange(year){
 			});
 }
 
-//this function will be used in place of all of the filtering boolean expressions so we can check and combine multiple filters without having to write them into numerous places
+//this function will be used in place of all of the filtering boolean expressions 
+//so we can check and combine multiple filters without having to write them into numerous places
 function filterDots(){
 	var year = document.getElementById('year').value;
 	svg.selectAll('.dot')
@@ -185,9 +186,18 @@ function filterDots(){
 				}
 				d3.select(this).moveToFront();
 			}
-			else
-				return backgroundOpacity;
-			});
+			else return backgroundOpacity;
+		});
+
+	// svg.selectAll("dot")
+	// 	.on("mouseover", function(d){
+	// 		if (window.backgroundOpacity == 0.0) console.log("opacity 0");
+	// 		else return tip.show;
+	// 	})
+	// 	.on("mouseout", function(d){
+	// 		if (window.backgroundOpacity == 0.0) return;
+	// 		else return tip.hide;
+	// 	});
 
 	console.log("dots filtered");
 }
@@ -202,6 +212,18 @@ function checkboxClicked(){
 	});
 	console.log(selectedGenres);
 	filterDots();
+}
+
+function showAllYearsClicked(){
+	if($('#yearSwitch').is(':checked')){
+		window.backgroundOpacity=0.1;
+		filterDots();
+	}
+	else{
+		window.backgroundOpacity=0.0;
+		filterDots();
+	}
+	console.log("changed opacity to " + window.backgroundOpacity);
 }
 
 function selectAll(box){
