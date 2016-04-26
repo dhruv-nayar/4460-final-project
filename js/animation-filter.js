@@ -235,4 +235,5 @@ function selectAll(box){
 			$(this).prop('checked','');
 			checkboxClicked();
 		})
+		$(box).prop('checked', '');
 }

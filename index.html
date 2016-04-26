@@ -74,9 +74,6 @@
 			</div>
 
 			<div class="col s12 m6">
-				<span class="white-text light">Filter by:</span>
-				<div id="genre-container"></div>
-				<!-- Switch -->
 				<div class="switch">
 					<label>
 						Hide filtered dots
@@ -85,14 +82,21 @@
 						Show filtered dots
 					</label>
 				</div>
+				<hr/>
+				<span class="white-text light">Filter by Genre:</span>
+				<div id="genre-container"></div>
+				<!-- Switch -->
+				
 
 				<!-- Slider -->
+				<hr/>
+				<span class="white-text light">Filter by Year: <span id = "slider-text">2008</span>
+</span>
 				<div id = "slider-container">
-					<input id="year" type= "range" min= "2000" max="2016" onchange= "yearChange(this.value)" oninput= "document.getElementById('slider-text').innerHTML = this.value;"></input>
-					<p id = "slider-text">2008</p>
+					<input id="year" type= "range" min= "2000" max="2015" onchange= "yearChange(this.value)" oninput= "document.getElementById('slider-text').innerHTML = this.value;"></input>
 				</div>
 
-				<div class="white-text light center"><span id='movieName'></span></div>
+				<div class="white-text light center" id="titleContainer"><span id='movieName'></span></div>
 
 				<div class="bubbleChart"></div>
 			</div>

@@ -27,7 +27,7 @@ function sortArrayByUnit(array, unit){
 
 
 function similarityTitle(){
-    return textForm[yAxisUnit] +" for movies with similar "+textForm[xAxisUnit];
+    return textForm[yAxisUnit] +" for Movies with Similar "+textForm[xAxisUnit];
 }
 
 function getKSimilarMovies(movie, unit, k){
