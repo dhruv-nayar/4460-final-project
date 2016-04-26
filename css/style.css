@@ -1,12 +1,12 @@
 html{
   background-color: #202020;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .bubbleChart {
   min-width: 100px;
   max-width: 600px;
-  height: 400px;
+  height: 350px;
   margin: 0 auto;
 }
 
@@ -25,22 +25,23 @@ html{
 
 #select-container-y {
     color: white;
-     -webkit-transform: rotate(-90deg);
-    -webkit-transform-origin: left top;
+
+    -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
-    -moz-transform-origin: left top;
     -ms-transform: rotate(-90deg);
-    -ms-transform-origin: left top;
     -o-transform: rotate(-90deg);
-    -o-transform-origin: left top;
     transform: rotate(-90deg);
+
+    -webkit-transform-origin: left top;
+    -moz-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -o-transform-origin: left top;
     transform-origin: left top;
 
-    position: absolute;
-    bottom: 40%;
-    left: 0;
+    position:absolute;
+    top: 400px;
+
     white-space: nowrap;
-    font-size: 48px;
 
 }
 
@@ -48,7 +49,7 @@ html{
     color: white;
     display: inline;
     position: relative;
-    left: 225px;
+    left: 330px;
     /*bottom: 15%;
     left: 200px;
     top: 90px;*/
@@ -62,7 +63,8 @@ html{
 }
 
 #graph{
-  margin-top: -45px;
+  margin-top: -70px;
+  margin-left: 20px;
 }
 
 .padCheckbox{

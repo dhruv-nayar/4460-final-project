@@ -19,7 +19,6 @@
 	<link rel="stylesheet" type="text/css" href="css/materialize.css">
 
 	<!-- for the second view -->
-	<!-- <script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script> -->
 	<script src="js/bubbles/bubbles.js"></script>
 	<script src="js/bubbles/d3-transform.js"></script>
 	<script src="js/bubbles/extarray.js"></script>
@@ -45,20 +44,20 @@
 
 		<!-- row for both views -->
 		<div class="row">
-			<!-- X axis data selection (if needed) -->
-
-			<div id="select-container-y" class="">
-				<select id="selection" onchange= "dropdownYChange(this.value)">
-					<option value = "# award nominations"># Total Award Nominations</option>
-					<option value = "gross ($)">Revenue</option>
-					<option value = "average rating">Average Rating</option>
-					<option value = "imdb rating">IMDB Rating</option>
-					<option value = "metascore">Metascore</option>
-					<option value = "# award wins"># of Award Wins</option>
-				</select>
-			</div>
 
 			<div id="graph-container" class="col s12 m6">
+				<!-- Y axis data selection -->
+				<div id="select-container-y">
+					<select id="selection" onchange= "dropdownYChange(this.value)">
+						<option value = "# award nominations"># Total Award Nominations</option>
+						<option value = "gross ($)">Revenue</option>
+						<option value = "average rating">Average Rating</option>
+						<option value = "imdb rating">IMDB Rating</option>
+						<option value = "metascore">Metascore</option>
+						<option value = "# award wins"># of Award Wins</option>
+					</select>
+				</div>
+
 				<!-- Our graph will be added inside this divider element -->
 				<div id="graph"></div>
 
@@ -91,6 +90,8 @@
 					<input id="year" type= "range" min= "2000" max="2016" onchange= "yearChange(this.value)" oninput= "document.getElementById('slider-text').innerHTML = this.value;"></input>
 					<p id = "slider-text">2008</p>
 				</div>
+
+				<h5 class="white-text light center">Similar Movies</h5>
 
 				<div class="bubbleChart"></div>
 			</div>
