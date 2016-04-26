@@ -36,7 +36,6 @@ function newBubbleChart(obj) {
       {
         name: "central-click",
         options: {
-          // text: "(Click to visit IMDB page)",
           style: {
             "font-size": "18px",
             "font-style": "italic",
@@ -46,7 +45,6 @@ function newBubbleChart(obj) {
             "fill": "white"
           },
           attr: {dy: "65px"},
-          attr: {innerHTML: "<a href='http://google.com'>Click this</a>"},
           centralClick: function() {
             alert("Here is more details!!");
           }

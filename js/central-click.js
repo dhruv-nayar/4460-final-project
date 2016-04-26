@@ -33,6 +33,7 @@ d3.svg.BubbleChart.define("central-click", function (options) {
       var temp = node[0];
       var temp2 = temp[0].__data__;
       var cur_imdbID = temp2.item.imdb_id;
+      var htmlText = "<a href='http://imdb.com/title/" +cur_imdbID +"' target=_blank>(Click to visit IMDB page)</a>"
       console.log(cur_imdbID);
       transition.each("end", function() {
         node.append("text").classed({"central-click": true})
@@ -41,6 +42,7 @@ d3.svg.BubbleChart.define("central-click", function (options) {
           .attr("x", function (d) {return d.cx;})
           .attr("y", function (d) {return d.cy;})
           .text(options.text)
+          .html(htmlText)
           .style("opacity", 0).transition().duration(self.getOptions().transitDuration / 2).style("opacity", "0.8");
       });
       return fn;
