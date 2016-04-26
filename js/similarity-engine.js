@@ -1,10 +1,22 @@
 var sortedArrays = {};
+var textForm = {};
 
 function initializeSimilarityEngine(rawData){
 
 	sortedArrays['average rating'] = sortArrayByUnit(rawData.slice(), 'average rating');
     sortedArrays['imdb rating'] = sortArrayByUnit(rawData.slice(), 'imdb rating');
     sortedArrays['metascore'] = sortArrayByUnit(rawData.slice(), 'metascore');
+    sortedArrays['# award nominations'] = sortArrayByUnit(rawData.slice(), '# award nominations');
+    sortedArrays['# award wins'] = sortArrayByUnit(rawData.slice(), '# award wins');
+    sortedArrays['gross ($)'] = sortArrayByUnit(rawData.slice(), 'gross ($)');
+
+    textForm['average rating'] = 'average ratings';
+    textForm['imdb rating'] = 'imdb ratings';
+    textForm['metascore'] = 'metascores';
+    textForm['# award nominations'] = '# award nominations';
+    textForm['# award wins'] = '# award wins';
+    textForm['gross ($)'] = 'revenues ($)';
+
 	console.dir(sortedArrays);
 }
 
@@ -13,6 +25,10 @@ function sortArrayByUnit(array, unit){
 	return array;
 }
 
+
+function similarityTitle(){
+    return textForm[yAxisUnit] +" for movies with similar "+textForm[xAxisUnit];
+}
 
 function getKSimilarMovies(movie, unit, k){
 	var kClosest = getKclosest(sortedArrays[unit], movie, k, sortedArrays[unit].length, 'average rating');
