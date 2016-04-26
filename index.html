@@ -22,15 +22,14 @@
 	<script src="js/bubbles.js"></script>
 
 	<script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
-	<script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
-	<script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>
-	<script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
-	<script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
-	<script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
-	<script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
-	<!-- <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script> -->
+	<script src="js/bubbles/d3-transform.js"></script>
+	<script src="js/bubbles/extarray.js"></script>
+	<script src="js/bubbles/misc.js"></script>
+	<script src="js/bubbles/micro-observer.js"></script>
+	<script src="js/bubbles/microplugin.js"></script>
+	<script src="js/bubbles/bubble-chart.js"></script>
+	<script src="js/bubbles/lines.js"></script>
 	<script src="js/central-click.js"></script>
-	<script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
 
 
 </head>
@@ -39,16 +38,7 @@
 		<!-- row for selection and legend -->
 		<div class="row">
 			<!-- Y axis data selection, move this next to the y-axis so the axis label can just be the dropdown -->
-
-
-<!-- 			<div id="button-container">
-				<span id="button-container-text">Average Rating vs.</span>
-				<a class="btn waves-effect waves-light" data-value = "# oscar nominations" onclick= "dropdownChange(this.getAttribute('data-value'))"># Oscars</a>
-				<a class="btn waves-effect waves-light" data-value = "golden globe" onclick= "dropdownChange(this.getAttribute('data-value'))"># Golden Globe</a>
-				<a class="btn waves-effect waves-light" data-value = "gross ($)" onclick= "dropdownChange(this.getAttribute('data-value'))">Gross Revenue</a>
-				<!-- <a id="newBubbleButton" class="btn waves-effect waves-light">New Bubble Chart</a>
-			</div> -->
-			<h2 class="center white-text light"> Do Official Awards even <span class="strong"> MATTER? </span></h2> <!-- maybe do something like "do ratings matter? -->
+			<h2 class="center white-text light"> Do Official Awards even <span class="strong"> MATTER? </span></h2>
 			<!-- Legend will be added inside this element -->
 			<div id = "legend-container" class="col s3">
 			</div>
@@ -72,7 +62,7 @@
 			<div id="graph-container" class="col s12 m6">
 				<!-- Our graph will be added inside this divider element -->
 				<div id="graph"></div>
-				
+
 				<div id="select-container-x">
 					<select id="selection" onchange="dropdownXChange(this.value)" data-dropup="true">
 						<option value = "average rating">Average Rating</option>
